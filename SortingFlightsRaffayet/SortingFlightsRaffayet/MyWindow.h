@@ -11,6 +11,7 @@
 #include <FL/Fl_Scroll.H>
 #include <vector>
 #include "SortCriteria.h"
+#include "SortAlgorithm.h"
 
 // Include the header file for the Flight class or declare it
 #include "Flight.h" // Adjust this include to your specific file
@@ -18,6 +19,7 @@
 class MyWindow : public Fl_Window {
 public:
     SortCriteria sortCriteria;
+    SortAlgorithm sortAlgorithm;
 
     MyWindow(int w, int h, const char* title);
 
@@ -33,10 +35,17 @@ private:
     Fl_Scroll* scroll;
     std::vector<Fl_Box*> boxes;
 
+    Fl_Box* sort_criteria_label;
     Fl_Choice* sort_criteria_choice; // Dropdown for sorting criteria
+
+    Fl_Box* sort_algorithm_label;
+    Fl_Choice* sort_algorithm_choice; // Dropdown for sorting criteria
 
     static void cb_sort_criteria(Fl_Widget*, void*); // Callback for the dropdown
     void sort_criteria_changed(); 
+
+    static void cb_sort_algorithm(Fl_Widget*, void*); // Callback for the dropdown
+    void sort_algorithm_changed();
 
     // etc.
 

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <FL/Fl_Box.h>
 #include "SortCriteria.h"
+#include "SortAlgorithm.h"
 
 // Ovde morate da koristite potpis konstruktora koji ste definisali u .h fajlu
 MyWindow::MyWindow(int w, int h, const char* title) : Fl_Window(w, h, title) {
@@ -19,12 +20,21 @@ MyWindow::MyWindow(int w, int h, const char* title) : Fl_Window(w, h, title) {
     scroll = new Fl_Scroll(10, 10, w - 20, h - 20);
     scroll->type(Fl_Scroll::VERTICAL_ALWAYS);
 
-    sort_criteria_choice = new Fl_Choice(100, 10, 120, 25); // Adjust position and size as needed
+    sort_criteria_label = new Fl_Box(130, 10, 120, 25, "Sort Criteria");
+
+    sort_criteria_choice = new Fl_Choice(250, 10, 120, 25); // Adjust position and size as needed
     sort_criteria_choice->add("Departure Time");
     sort_criteria_choice->add("Destination");
     sort_criteria_choice->add("Flight Number");
     sort_criteria_choice->add("Gate Number");
     sort_criteria_choice->callback(cb_sort_criteria, this);
+
+    sort_algorithm_label = new Fl_Box(520, 10, 120, 25, "Sort Algorithm");
+
+    sort_algorithm_choice = new Fl_Choice(650, 10, 120, 25); // Adjust position and size as needed
+    sort_algorithm_choice->add("Selection Sort");
+    sort_algorithm_choice->add("Quick Sort");
+    sort_algorithm_choice->callback(cb_sort_criteria, this);
 
     this->end(); // End of adding widgets to the window
     this->show(); // Show the window
@@ -52,6 +62,11 @@ void MyWindow::cb_sort_criteria(Fl_Widget* widget, void* data) {
     window->sort_criteria_changed();
 }
 
+void MyWindow::cb_sort_algorithm(Fl_Widget* widget, void* data) {
+    MyWindow* window = static_cast<MyWindow*>(data);
+    window->sort_algorithm_changed();
+}
+
 void MyWindow::sort_criteria_changed() {
     int choice = sort_criteria_choice->value();
     switch (choice) {
@@ -66,6 +81,23 @@ void MyWindow::sort_criteria_changed() {
         break;
     case 3:
         sortCriteria = SortCriteria(SortField::GateNumber);
+        break;
+    default:
+        // Handle default case
+        break;
+    }
+
+    // Add code to re-sort the flights or update the UI as needed
+}
+
+void MyWindow::sort_algorithm_changed() {
+    int choice = sort_algorithm_choice->value();
+    switch (choice) {
+    case 0:
+        sortAlgorithm = SortAlgorithm::SelectionSort;
+        break;
+    case 1:
+        sortAlgorithm = SortAlgorithm::QuickSort;
         break;
     default:
         // Handle default case

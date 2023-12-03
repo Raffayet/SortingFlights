@@ -36,6 +36,9 @@
     <ClInclude Include="DataStorage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SortAlgorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Flight.cpp">

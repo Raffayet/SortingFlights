@@ -136,6 +136,7 @@
     <ClInclude Include="MyWindow.h" />
     <ClInclude Include="QuickSort.h" />
     <ClInclude Include="SelectionSort.h" />
+    <ClInclude Include="SortAlgorithm.h" />
     <ClInclude Include="SortCriteria.h" />
   </ItemGroup>
   <ItemGroup>
