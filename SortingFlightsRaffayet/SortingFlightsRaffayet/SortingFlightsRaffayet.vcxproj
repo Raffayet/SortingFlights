@@ -70,6 +70,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\vcpkg\installed\x64-windows\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -127,22 +130,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BubbleSort.h" />
     <ClInclude Include="CommandLineArgs.h" />
     <ClInclude Include="DataStorage.h" />
     <ClInclude Include="Flight.h" />
     <ClInclude Include="MyWindow.h" />
     <ClInclude Include="QuickSort.h" />
-    <ClInclude Include="SortAlgorithm.h" />
+    <ClInclude Include="SelectionSort.h" />
     <ClInclude Include="SortCriteria.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FileManager.cpp" />
+    <ClCompile Include="CommandLineArgs.cpp" />
+    <ClCompile Include="DataStorage.cpp" />
     <ClCompile Include="Flight.cpp" />
-    <ClCompile Include="FlightSorter.cpp" />
-    <ClCompile Include="GUI.cpp" />
+    <ClCompile Include="MyWindow.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="SortAlgorithms.cpp" />
+    <ClCompile Include="QuickSort.cpp" />
+    <ClCompile Include="SelectionSort.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="flights.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

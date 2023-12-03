@@ -3,7 +3,7 @@
 
 #include "SortAlgorithm.h"
 
-class BubbleSort : public SortAlgorithm {
+class BubbleSort {
 public:
     void sort(std::vector<Flight>& flights, const SortCriteria& criteria) override;
 };

@@ -3,20 +3,24 @@
 
 #include <vector>
 #include "Flight.h"
-#include "SortAlgorithm.h"
+#include "SelectionSort.h"
+#include <string>
+using std::vector;
 
 class DataStorage {
 public:
-    DataStorage();
+    static const std::string flightsDataPath;
+
+    DataStorage(bool limitToTen);
 
     void addFlight(const Flight& flight);
-    const std::vector<Flight>& getFlights() const;
-    void sortFlights(const SortCriteria& criteria, SortAlgorithm& algorithm);
+    const vector<Flight>& loadFlights() const;
+    void selectionSortFlights(const SortCriteria& criteria, SelectionSort& selectionSort);
     void saveToFile(const std::string& filename) const;
+    void printFlights();
 
 private:
-    std::vector<Flight> flights;
+    vector<Flight> loadedFlights;
 };
 
 #endif // DATASTORAGE_H
-

@@ -19,6 +19,12 @@ private:
     SortOrder sortOrder;
 
 public:
+    // Default constructor
+    SortCriteria() : sortField(SortField::DepartureTime), sortOrder(SortOrder::Ascending) {}
+
+    SortCriteria(SortField field): sortField(field), sortOrder(SortOrder::Ascending) {}
+
+    // Parameterized constructor
     SortCriteria(SortField field, SortOrder order)
         : sortField(field), sortOrder(order) {}
 

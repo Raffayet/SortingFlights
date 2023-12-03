@@ -1,15 +1,17 @@
 #ifndef QUICKSORT_H
 #define QUICKSORT_H
 
-#include "SortAlgorithm.h"
+#include <cstddef> // For size_t
+#include <vector>
+#include "Flight.h"
+#include "SortCriteria.h"
 
-class QuickSort : public SortAlgorithm {
+class QuickSort {
 public:
-    void sort(std::vector<Flight>& flights, const SortCriteria& criteria) override;
+    virtual void sort(std::vector<Flight>& flights, const SortCriteria& criteria) = 0;
 private:
-    void quickSortHelper(std::vector<Flight>& flights, int low, int high, const SortCriteria& criteria);
-    int partition(std::vector<Flight>& flights, int low, int high, const SortCriteria& criteria);
+    void quickSortHelper(std::vector<Flight>& flights, size_t low, size_t high, const SortCriteria& criteria);
+    size_t partition(std::vector<Flight>& flights, size_t low, size_t high, const SortCriteria& criteria);
 };
 
 #endif // QUICKSORT_H
-

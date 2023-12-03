@@ -18,10 +18,7 @@
     <ClInclude Include="Flight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SortAlgorithm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BubbleSort.h">
+    <ClInclude Include="SelectionSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MyWindow.h">
@@ -44,20 +41,28 @@
     <ClCompile Include="Flight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SortAlgorithms.cpp">
+    <ClCompile Include="SelectionSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FlightSorter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FileManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GUI.cpp">
+    <ClCompile Include="MyWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QuickSort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandLineArgs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="flights.txt">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
