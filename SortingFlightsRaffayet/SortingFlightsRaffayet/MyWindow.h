@@ -33,9 +33,10 @@ public:
     void setFlights(const std::vector<Flight>& flights);
     void highlightRows(int row1, int row2);
     void resetHighlighting();
-    void animate(void* window);
+    void animate();
     static void animate_callback(void* data);
-    void startAnimation(int row1, int row2);
+    void startAnimation();
+    void updateRow(int rowIndex, float progress, Fl_Color color);
 
 private:
     // Private members, buttons, input fields, etc.

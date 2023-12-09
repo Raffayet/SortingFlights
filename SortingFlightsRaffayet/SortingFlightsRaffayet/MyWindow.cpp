@@ -44,112 +44,84 @@ MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsT
     // Ovde treba dodati ostale UI elemente...
 }
 
-void MyWindow::startAnimation(int row1, int row2) {
-    // Set up initial animation states
+void MyWindow::startAnimation() {
     isAnimating = true;
-    animatingRow1 = row1;
-    animatingRow2 = row2;
-
-    // Swap elements in the collection
-    if (row1 < flightsToShow.size() && row2 < flightsToShow.size()) {
-        std::swap(flightsToShow[row1], flightsToShow[row2]);
-    }
-
     animationProgress = 0.0;
-
-    // Start the animation
     Fl::add_timeout(0.05, &MyWindow::animate_callback, this);
 }
 
-
 void MyWindow::animate_callback(void* data) {
     MyWindow* window = static_cast<MyWindow*>(data);
-    window->animate(window); // If 'animate' is a non-static member, you don't need to pass 'window'.
+    window->animate();
 }
 
+void MyWindow::updateRow(int rowIndex, float progress, Fl_Color color) {
+    const int boxHeight = 25;
+    const int spacingY = 5;
 
-void MyWindow::animate(void* window) {
-    MyWindow* win = static_cast<MyWindow*>(window);
+    int startIndex = rowIndex * 4;
 
-    if (win->isAnimating) {
-        const float duration = 1.0; // Total duration of the animation in seconds
-        win->animationProgress += 0.05f / duration;
+    // Starting and ending Y positions will depend on the row index
+    int startY, endY;
+    if (rowIndex == 0) {
+        startY = 150; // Starting Y position for row 0
+        endY = startY + 4 * (boxHeight + spacingY); // Ending Y position for row 0 (downward movement)
+    }
+    else if (rowIndex == 4) {
+        startY = 150 + 4 * (boxHeight + spacingY); // Starting Y position for row 4
+        endY = 150; // Ending Y position for row 4 (upward movement)
+    }
+    else {
+        return; // For now, only handle rows 0 and 4
+    }
 
-        if (win->animationProgress >= 1.0) {
-            win->isAnimating = false; // Stop the animation
-            win->animationProgress = 1.0; // Ensure progress doesn't exceed 1.0
-        }
+    int newY = static_cast<int>(startY + (endY - startY) * progress);
 
-        // Example values for row height and padding
-        const int rowHeight = 30; // Height of each row
-        const int padding = 5;   // Space between rows
-
-        // Starting Y positions for the first and fifth rows
-        int startY1 = 150; // Example starting position for the first row
-        int startY2 = startY1 + 4 * (rowHeight + padding); // Calculate position for fifth row
-
-        // Target positions after the swap
-        int targetY1 = startY2;
-        int targetY2 = startY1;
-
-        // Interpolate the positions
-        int newY1 = startY1 + static_cast<int>((targetY1 - startY1) * win->animationProgress);
-        int newY2 = startY2 + static_cast<int>((targetY2 - startY2) * win->animationProgress);
-
-        // Update the positions of the elements in the first and fifth rows
-        // This might involve moving the Fl_Box widgets or however you're displaying the flights
-
-        win->redraw();
-
-        if (!win->isAnimating) {
-            // Swap the elements in the data structure here
-            std::swap(win->flightsToShow[0], win->flightsToShow[4]); // Assuming 'flights' is your data structure
-            // Reset positions to final locations
-        }
-        else {
-            Fl::repeat_timeout(0.05, animate_callback, window); // Continue the animation
+    for (int i = 0; i < 4; ++i) {
+        int boxIndex = startIndex + i;
+        if (boxIndex < boxes.size()) {
+            Fl_Box* box = boxes[boxIndex];
+            box->color(color);
+            box->hide();
+            box->position(box->x(), newY);
+            box->show();
+            box->redraw();
         }
     }
 }
 
 
-void MyWindow::sort_pressed() {
-    highlightRows(0, 4);
-    startAnimation(0, 4);
-    //static int currentIndex = 0; // Tracks the current index for selection sort
-    //static int minIndex = 0;     // Tracks the minimum value's index
 
-    //if (currentIndex < flightsToShow.size() - 1) {
-    //    resetHighlighting(); // Reset highlighting from the previous step
+void MyWindow::animate() {
+    if (isAnimating) {
+        const float duration = 1.0; // Total duration of the animation in seconds
+        animationProgress += 0.05f / duration;
 
-    //    // Find the minimum element in the unsorted part
-    //    minIndex = currentIndex;
-    //    for (int i = currentIndex + 1; i < flightsToShow.size(); i++) {
-    //        if (flightsToShow[i].departure < flightsToShow[minIndex].departure) {
-    //            minIndex = i;
-    //        }
-    //    }
+        if (animationProgress >= 1.0) {
+            isAnimating = false;
+            animationProgress = 1.0;
+        }
 
-    //    // Highlight the rows to be swapped
-    //    highlightRows(currentIndex, minIndex);
+        // Update the positions and colors of rows 0 and 4
+        // Assuming you have a method to update position and color of rows
+        updateRow(0, animationProgress, isAnimating ? FL_RED : FL_GRAY);
+        updateRow(4, animationProgress, isAnimating ? FL_RED : FL_GRAY);
 
-    //    // Swap the found minimum element with the current element
-    //    std::swap(flightsToShow[currentIndex], flightsToShow[minIndex]);
+        redraw();
 
-    //    // Update the display
-    //    // (You should have a method to update the display based on the flights vector)
-
-    //    // Prepare for the next step
-    //    currentIndex++;
-    //    if (currentIndex >= flightsToShow.size() - 1) {
-    //        // Sorting is complete
-    //        currentIndex = 0; // Reset for the next sort
-    //    }
-    //}
-    //else {
-    //    resetHighlighting(); // Reset highlighting when sorting is complete
-    //}
+        if (!isAnimating) {
+            std::swap(flightsToShow[0], flightsToShow[4]); // Final swap after animation ends
+        }
+        else {
+            Fl::repeat_timeout(0.05, animate_callback, this);
+        }
+    }
 }
+
+void MyWindow::sort_pressed() {
+    startAnimation();
+}
+
 
 // Callback funkcija mora da odgovara deklaraciji u .h fajlu
 void MyWindow::cb_sort(Fl_Widget*, void* v) {
