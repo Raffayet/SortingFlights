@@ -12,6 +12,7 @@
 #include <vector>
 #include "SortCriteria.h"
 #include "SortAlgorithm.h"
+#include <vector>
 
 // Include the header file for the Flight class or declare it
 #include "Flight.h" // Adjust this include to your specific file
@@ -20,11 +21,21 @@ class MyWindow : public Fl_Window {
 public:
     SortCriteria sortCriteria;
     SortAlgorithm sortAlgorithm;
+    std::vector<Flight> flightsToShow;
 
-    MyWindow(int w, int h, const char* title);
+    bool isAnimating = false;
+    float animationProgress = 0.0;
+    int animatingRow1 = -1, animatingRow2 = -1;
+
+    MyWindow(int w, int h, const char* title, std::vector<Flight> flightsToShow);
 
     // Methods for user interface
     void setFlights(const std::vector<Flight>& flights);
+    void highlightRows(int row1, int row2);
+    void resetHighlighting();
+    void animate(void* window);
+    static void animate_callback(void* data);
+    void startAnimation(int row1, int row2);
 
 private:
     // Private members, buttons, input fields, etc.
@@ -47,17 +58,9 @@ private:
     static void cb_sort_algorithm(Fl_Widget*, void*); // Callback for the dropdown
     void sort_algorithm_changed();
 
-    // etc.
-
-    // Callback functions for events
     static void cb_sort(Fl_Widget*, void*);
-    // etc.
 
-    // Functions called during events
     void sort_pressed();
-    // etc.
-
-    // DataStorage dataStorage; // Instance of data storage class
 };
 
 #endif // MYWINDOW_H

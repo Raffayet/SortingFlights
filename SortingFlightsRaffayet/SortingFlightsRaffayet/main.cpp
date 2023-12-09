@@ -14,13 +14,11 @@ int main(int argc, char* argv[]) {
 
     DataStorage storage(true);
     vector<Flight> flights = storage.loadFlights(); // Load flights
-    //storage.printFlights();
 
     // Assuming SortAlgorithm is properly implemented and create method exists
     /*SortAlgorithm* sortAlgorithm = SortAlgorithm::create(args.getSortAlgorithm());
     sortAlgorithm->sort(flights);*/
-
-    MyWindow myWindow(1000, 700, "Flight Sorter");
+    MyWindow myWindow(1000, 700, "Flight Sorter", flights);
     myWindow.setFlights(flights); // Method to pass flight data to the window
 
     myWindow.show(); // Show window
