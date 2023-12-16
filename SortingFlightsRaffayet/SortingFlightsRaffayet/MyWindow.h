@@ -13,19 +13,31 @@
 #include "SortCriteria.h"
 #include "SortAlgorithm.h"
 #include <vector>
+#include <memory>
+#include "SelectionSort.h"
+
 
 // Include the header file for the Flight class or declare it
 #include "Flight.h" // Adjust this include to your specific file
+#include "RowPosition.h"
 
 class MyWindow : public Fl_Window {
 public:
     SortCriteria sortCriteria;
     SortAlgorithm sortAlgorithm;
     std::vector<Flight> flightsToShow;
+    size_t i, j, min_idx;  // Variables to keep track of sorting state
+    bool isSorting;
 
+    Fl_Box* sortingCompleteLabel;
+    int animationState = 0;
     bool isAnimating = false;
     float animationProgress = 0.0;
     int animatingRow1 = -1, animatingRow2 = -1;
+    std::vector<Fl_Color> originalColors;
+    int firstAnimatedRow;
+    int secondAnimatedRow;
+    std::vector<RowPosition> rowPositions;
 
     MyWindow(int w, int h, const char* title, std::vector<Flight> flightsToShow);
 
@@ -35,8 +47,11 @@ public:
     void resetHighlighting();
     void animate();
     static void animate_callback(void* data);
-    void startAnimation();
-    void updateRow(int rowIndex, float progress, Fl_Color color);
+    void startAnimation(int firstRowIndex, int secondRowIndex);
+    void updateRow(int upRowIndex, int downRowIndex, float progress);
+    void returnPreviousColor(int upRowIndex, int downRowIndex);
+    void updateBoxesPosition(int rowIndex, int newY);
+    void setupBox(Fl_Box* box);
 
 private:
     // Private members, buttons, input fields, etc.

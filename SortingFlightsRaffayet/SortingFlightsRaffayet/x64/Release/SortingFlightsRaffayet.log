@@ -1,6 +1,9 @@
 ﻿  MyWindow.cpp
+C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(195,35): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(195,32): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(290,59): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   Generating code
-  3 of 367 functions ( 0.8%) were compiled, the rest were copied from previous compilation.
+  3 of 478 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

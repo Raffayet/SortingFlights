@@ -14,6 +14,10 @@ class Flight {
             : flightNo(flightNo), destination(destination), departure(departure), gateNo(gateNo) {}
 
         bool compare(const Flight& other) const;    
+        bool operator<(const Flight& other) const;
         string getFlightInfo() const;
+
+
 };
+bool compareTimes(const std::string& time1, const std::string& time2);  // Declare as standalone
 #endif // FLIGHT_H

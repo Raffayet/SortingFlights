@@ -22,5 +22,5 @@ int main(int argc, char* argv[]) {
     myWindow.setFlights(flights); // Method to pass flight data to the window
 
     myWindow.show(); // Show window
-    return Fl::run(); // Start FLTK event loop
+    return Fl::run();
 }

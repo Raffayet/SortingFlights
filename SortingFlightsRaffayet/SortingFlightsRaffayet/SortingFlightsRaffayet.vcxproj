@@ -135,6 +135,7 @@
     <ClInclude Include="Flight.h" />
     <ClInclude Include="MyWindow.h" />
     <ClInclude Include="QuickSort.h" />
+    <ClInclude Include="RowPosition.h" />
     <ClInclude Include="SelectionSort.h" />
     <ClInclude Include="SortAlgorithm.h" />
     <ClInclude Include="SortCriteria.h" />
@@ -146,6 +147,7 @@
     <ClCompile Include="MyWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="QuickSort.cpp" />
+    <ClCompile Include="RowPoistion.cpp" />
     <ClCompile Include="SelectionSort.cpp" />
   </ItemGroup>
   <ItemGroup>

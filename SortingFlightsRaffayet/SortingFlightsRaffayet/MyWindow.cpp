@@ -9,7 +9,8 @@
 #include <vector>
 
 // Ovde morate da koristite potpis konstruktora koji ste definisali u .h fajlu
-MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsToShow) : Fl_Window(w, h, title) {
+MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsToShow)
+    : Fl_Window(w, h, title), flightsToShow(flightsToShow), i(0), j(1), min_idx(0), isSorting(false) {
     // Inicijalizujte korisnički interfejs komponente ovde
     // Na primer, stvaranje dugmeta za sortiranje
     sort_button = new Fl_Button(10, 10, 80, 30, "Sort");
@@ -20,6 +21,8 @@ MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsT
     sort_menu = new Fl_Choice(100, 90, 200, 30);
     scroll = new Fl_Scroll(10, 10, w - 20, h - 20);
     scroll->type(Fl_Scroll::VERTICAL_ALWAYS);
+
+    int animationState = 0;
 
     sort_criteria_label = new Fl_Box(130, 10, 120, 25, "Sort Criteria");
 
@@ -37,6 +40,9 @@ MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsT
     sort_algorithm_choice->add("Quick Sort");
     sort_algorithm_choice->callback(cb_sort_criteria, this);
 
+    sortingCompleteLabel = new Fl_Box(160, 10, 120, 25);
+    sortingCompleteLabel->hide();
+
     this->end(); // End of adding widgets to the window
     this->show(); // Show the window
     // itd.
@@ -44,7 +50,23 @@ MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsT
     // Ovde treba dodati ostale UI elemente...
 }
 
-void MyWindow::startAnimation() {
+void MyWindow::startAnimation(int firstRowIndex, int secondRowIndex) {
+    originalColors.clear();
+
+    firstAnimatedRow = firstRowIndex;
+    secondAnimatedRow = secondRowIndex;
+
+    // Store colors for the specified rows
+    int startIndexFirstRow = firstRowIndex * 4; // Assuming 4 boxes per row
+    int startIndexSecondRow = secondRowIndex * 4;
+
+    for (int i = startIndexFirstRow; i < startIndexFirstRow + 4; ++i) {
+        originalColors.push_back(boxes[i]->color());
+    }
+    for (int i = startIndexSecondRow; i < startIndexSecondRow + 4; ++i) {
+        originalColors.push_back(boxes[i]->color());
+    }
+
     isAnimating = true;
     animationProgress = 0.0;
     Fl::add_timeout(0.05, &MyWindow::animate_callback, this);
@@ -52,43 +74,73 @@ void MyWindow::startAnimation() {
 
 void MyWindow::animate_callback(void* data) {
     MyWindow* window = static_cast<MyWindow*>(data);
-    window->animate();
+    window->animate(); // Call the member function to handle animation logic
 }
 
-void MyWindow::updateRow(int rowIndex, float progress, Fl_Color color) {
-    const int boxHeight = 25;
-    const int spacingY = 5;
+void MyWindow::updateRow(int upRowIndex, int downRowIndex, float progress) {
+    // Dobijanje početnih i krajnjih pozicija iz rowPositions
+    RowPosition& startUpPos = rowPositions[upRowIndex];
+    RowPosition& startDownPos = rowPositions[downRowIndex];
 
-    int startIndex = rowIndex * 4;
+    RowPosition endUpPos = rowPositions[downRowIndex];
+    RowPosition endDownPos = rowPositions[upRowIndex];
 
-    // Starting and ending Y positions will depend on the row index
-    int startY, endY;
-    if (rowIndex == 0) {
-        startY = 150; // Starting Y position for row 0
-        endY = startY + 4 * (boxHeight + spacingY); // Ending Y position for row 0 (downward movement)
-    }
-    else if (rowIndex == 4) {
-        startY = 150 + 4 * (boxHeight + spacingY); // Starting Y position for row 4
-        endY = 150; // Ending Y position for row 4 (upward movement)
-    }
-    else {
-        return; // For now, only handle rows 0 and 4
-    }
+    // Izračunavanje trenutnih pozicija na osnovu napretka animacije
+    int currentYUp = static_cast<int>(startUpPos.y + (endUpPos.y - startUpPos.y) * progress);
+    int currentYDown = static_cast<int>(startDownPos.y + (endDownPos.y - startDownPos.y) * progress);
 
-    int newY = static_cast<int>(startY + (endY - startY) * progress);
-
+    // Ažuriranje položaja redova
     for (int i = 0; i < 4; ++i) {
-        int boxIndex = startIndex + i;
+        int boxIndexUp = upRowIndex * 4 + i;
+        int boxIndexDown = downRowIndex * 4 + i;
+
+        if (boxIndexUp < boxes.size() && boxIndexDown < boxes.size()) {
+            Fl_Box* boxUp = boxes[boxIndexUp];
+            Fl_Box* boxDown = boxes[boxIndexDown];
+
+            boxUp->position(boxUp->x(), currentYUp);
+            boxDown->position(boxDown->x(), currentYDown);
+
+            // Primena crvene boje tokom animacije
+            boxUp->color(FL_RED);
+            boxDown->color(FL_RED);
+
+            boxUp->redraw();
+            boxDown->redraw();
+        }
+    }
+
+    // Redraw the scroll to update the view
+    scroll->redraw();
+}
+
+
+
+
+
+
+void MyWindow::returnPreviousColor(int upRowIndex, int downRowIndex) {
+    // Reset colors for the up-moving row
+    for (int i = 0; i < 4; ++i) {
+        int boxIndex = upRowIndex * 4 + i;
         if (boxIndex < boxes.size()) {
             Fl_Box* box = boxes[boxIndex];
-            box->color(color);
-            box->hide();
-            box->position(box->x(), newY);
-            box->show();
+            box->color(originalColors[i]); // Use the first 4 colors for up row
+            box->redraw();
+        }
+    }
+
+    // Reset colors for the down-moving row
+    for (int i = 0; i < 4; ++i) {
+        int boxIndex = downRowIndex * 4 + i;
+        if (boxIndex < boxes.size()) {
+            Fl_Box* box = boxes[boxIndex];
+            box->color(originalColors[i + 4]); // Use the next 4 colors for down row
             box->redraw();
         }
     }
 }
+
 
 
 
@@ -98,28 +150,63 @@ void MyWindow::animate() {
         animationProgress += 0.05f / duration;
 
         if (animationProgress >= 1.0) {
-            isAnimating = false;
+            // Clamp the progress and end the animation
             animationProgress = 1.0;
-        }
+            isAnimating = false;
 
-        // Update the positions and colors of rows 0 and 4
-        // Assuming you have a method to update position and color of rows
-        updateRow(0, animationProgress, isAnimating ? FL_RED : FL_GRAY);
-        updateRow(4, animationProgress, isAnimating ? FL_RED : FL_GRAY);
-
-        redraw();
-
-        if (!isAnimating) {
-            std::swap(flightsToShow[0], flightsToShow[4]); // Final swap after animation ends
+            // Reset colors to their original values after the animation ends
+            returnPreviousColor(firstAnimatedRow, secondAnimatedRow);
         }
         else {
+            // Update the row positions based on the current progress
+            updateRow(firstAnimatedRow, secondAnimatedRow, animationProgress);
+        }
+
+        // Redraw the window to reflect the changes
+        redraw();
+
+        if (isAnimating) {
+            // Schedule the next frame of the animation
             Fl::repeat_timeout(0.05, animate_callback, this);
+        }
+        else {
+            // Here you could start another animation if needed, or perform other actions
         }
     }
 }
 
 void MyWindow::sort_pressed() {
-    startAnimation();
+    if (!isSorting) {
+        i = 0;
+        isSorting = true;
+    }
+
+    if (i < flightsToShow.size() - 1) {
+        if (j <= flightsToShow.size()) {
+            min_idx = i;
+            for (j = i + 1; j < flightsToShow.size(); ++j) {
+                if (flightsToShow[j] < flightsToShow[min_idx]) {
+                    min_idx = j;
+                }
+            }
+
+            if (min_idx != i) {
+                std::swap(flightsToShow[min_idx], flightsToShow[i]);
+                startAnimation(i, min_idx);
+                i++;
+                return;
+            }
+            i++;
+        }
+        else {
+            isSorting = false;
+            sortingCompleteLabel->show();
+        }
+    }
+    else {
+        isSorting = false;
+        sortingCompleteLabel->show();
+    }
 }
 
 
@@ -181,59 +268,47 @@ void MyWindow::sort_algorithm_changed() {
 }
 
 void MyWindow::setFlights(const std::vector<Flight>& flights) {
-    const int colWidth = 200; // Width for each column
+    flightsToShow = flights;
+    const int colWidth = 220; // Width for each column
     const int boxHeight = 25;  // Height of the rows
     const int borderWidth = 1; // Width of the border
     const int numCols = 4;     // Number of columns
-    const int startX = 10;     // Starting X position for the table
-    const int startY = 150;    // Starting Y position for the table
-    const int spacingY = 5;    // Spacing between rows
 
-    Fl_Color borderColor = fl_rgb_color(200, 200, 200); // Light grey border
-
-    // Clear previous widgets
+    // Clear previous widgets and positions
     for (auto* box : boxes) {
         scroll->remove(box);
         delete box;
     }
     boxes.clear();
+    rowPositions.clear();
 
-    int y = startY;
-    for (size_t i = 0; i < flights.size(); ++i) {
-        int x = startX;
-        // Create a border box for each row
-        if (i > 0) { // Skip the border above the first row
-            Fl_Box* borderBox = new Fl_Box(startX, y, this->w() - 20, borderWidth);
-            borderBox->box(FL_FLAT_BOX); // Flat box looks like a line
-            borderBox->color(borderColor);
-            scroll->add(borderBox);
-            boxes.push_back(borderBox);
-            y += borderWidth;
-        }
+    // Initialize row positions
+    const int startX = 50;    // Starting X position for the table
+    const int startY = 150;   // Starting Y position for the table
+    const int spacingY = 5;   // Spacing between rows
+    for (size_t i = 0; i < flightsToShow.size(); ++i) {
+        rowPositions.push_back(RowPosition(startX, startY + i * (boxHeight + spacingY), colWidth, boxHeight));
+    }
 
-        // Create a box for each field in the Flight object
-        Fl_Box* flightNoBox = new Fl_Box(x, y, colWidth, boxHeight);
-        flightNoBox->box(FL_FLAT_BOX);
-        flightNoBox->color(FL_WHITE);
-        flightNoBox->label(flights[i].flightNo.c_str());
+    // Create and add boxes for each flight
+    for (size_t i = 0; i < flightsToShow.size(); ++i) {
+        RowPosition& pos = rowPositions[i];
+        int x = pos.x;
+
+        Fl_Box* flightNoBox = new Fl_Box(x, pos.y, colWidth, boxHeight, flightsToShow[i].flightNo.c_str());
+        setupBox(flightNoBox);
         x += colWidth + borderWidth;
 
-        Fl_Box* destinationBox = new Fl_Box(x, y, colWidth, boxHeight);
-        destinationBox->box(FL_FLAT_BOX);
-        destinationBox->color(FL_WHITE);
-        destinationBox->label(flights[i].destination.c_str());
+        Fl_Box* destinationBox = new Fl_Box(x, pos.y, colWidth, boxHeight, flightsToShow[i].destination.c_str());
+        setupBox(destinationBox);
         x += colWidth + borderWidth;
 
-        Fl_Box* departureBox = new Fl_Box(x, y, colWidth, boxHeight);
-        departureBox->box(FL_FLAT_BOX);
-        departureBox->color(FL_WHITE);
-        departureBox->label(flights[i].departure.c_str());
+        Fl_Box* departureBox = new Fl_Box(x, pos.y, colWidth, boxHeight, flightsToShow[i].departure.c_str());
+        setupBox(departureBox);
         x += colWidth + borderWidth;
 
-        Fl_Box* gateNoBox = new Fl_Box(x, y, colWidth, boxHeight);
-        gateNoBox->box(FL_FLAT_BOX);
-        gateNoBox->color(FL_WHITE);
-        gateNoBox->label(flights[i].gateNo.c_str());
+        Fl_Box* gateNoBox = new Fl_Box(x, pos.y, colWidth, boxHeight, flightsToShow[i].gateNo.c_str());
+        setupBox(gateNoBox);
 
         // Add the boxes to the vector and the scroll
         boxes.push_back(flightNoBox);
@@ -245,13 +320,18 @@ void MyWindow::setFlights(const std::vector<Flight>& flights) {
         scroll->add(destinationBox);
         scroll->add(departureBox);
         scroll->add(gateNoBox);
-
-        y += boxHeight + spacingY; // Move to the next row
     }
 
     scroll->redraw();
     this->redraw();
 }
+
+void MyWindow::setupBox(Fl_Box* box) {
+    box->box(FL_FLAT_BOX);
+    box->color(FL_WHITE);
+    box->redraw();
+}
+
 
 void MyWindow::highlightRows(int row1, int row2) {
     Fl_Color highlightColor = FL_RED; // Color for highlighting
