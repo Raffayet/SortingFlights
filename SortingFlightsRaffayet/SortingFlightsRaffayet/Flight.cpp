@@ -32,25 +32,26 @@ bool Flight::operator<(const Flight& other) const {
     if (compareTimes(this->departure, other.departure)) {
         return true;
     }
-    else if (departure > other.departure) {
-        return false;
-    }
-    // Secondary comparison on flight number
-    if (flightNo < other.flightNo) {
-        return true;
-    }
-    else if (flightNo > other.flightNo) {
-        return false;
-    }
-    // Tertiary comparison on destination
-    if (destination < other.destination) {
-        return true;
-    }
-    else if (destination > other.destination) {
-        return false;
-    }
-    // Last comparison on gate number
-    return gateNo < other.gateNo;
+    //else if (departure > other.departure) {
+    //    return false;
+    //}
+    //// Secondary comparison on flight number
+    //if (flightNo < other.flightNo) {
+    //    return true;
+    //}
+    //else if (flightNo > other.flightNo) {
+    //    return false;
+    //}
+    //// Tertiary comparison on destination
+    //if (destination < other.destination) {
+    //    return true;
+    //}
+    //else if (destination > other.destination) {
+    //    return false;
+    //}
+    //// Last comparison on gate number
+    //return gateNo < other.gateNo;
+    return false;
 }
 
 bool compareTimes(const std::string& time1, const std::string& time2) {

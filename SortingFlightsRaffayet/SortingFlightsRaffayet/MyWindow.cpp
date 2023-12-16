@@ -206,6 +206,7 @@ void MyWindow::sort_pressed() {
 
             if (min_idx != i) {
                 std::swap(flightsToShow[min_idx], flightsToShow[i]);
+                std::swap(rowPositions[min_idx], rowPositions[i]);
                 startAnimation(i, min_idx);
                 i++;
                 return;
