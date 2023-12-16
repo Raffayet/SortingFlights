@@ -114,11 +114,6 @@ void MyWindow::updateRow(int upRowIndex, int downRowIndex, float progress) {
     scroll->redraw();
 }
 
-
-
-
-
-
 void MyWindow::returnPreviousColor(int upRowIndex, int downRowIndex) {
     // Reset colors for the up-moving row
     for (int i = 0; i < 4; ++i) {
@@ -154,8 +149,14 @@ void MyWindow::animate() {
             animationProgress = 1.0;
             isAnimating = false;
 
+            // Zamena pozicija u rowPositions
+            std::swap(rowPositions[firstAnimatedRow], rowPositions[secondAnimatedRow]);
+
             // Reset colors to their original values after the animation ends
             returnPreviousColor(firstAnimatedRow, secondAnimatedRow);
+
+            // Osvežavanje položaja svih box-ova na osnovu novih rowPositions
+            updateAllRows();
         }
         else {
             // Update the row positions based on the current progress
@@ -171,6 +172,19 @@ void MyWindow::animate() {
         }
         else {
             // Here you could start another animation if needed, or perform other actions
+        }
+    }
+}
+
+void MyWindow::updateAllRows() {
+    for (size_t i = 0; i < rowPositions.size(); ++i) {
+        for (int j = 0; j < 4; ++j) {
+            int boxIndex = i * 4 + j;
+            if (boxIndex < boxes.size()) {
+                Fl_Box* box = boxes[boxIndex];
+                box->position(box->x(), rowPositions[i].y);
+                box->redraw();
+            }
         }
     }
 }

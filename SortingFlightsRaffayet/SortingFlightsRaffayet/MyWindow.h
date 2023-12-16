@@ -52,6 +52,7 @@ public:
     void returnPreviousColor(int upRowIndex, int downRowIndex);
     void updateBoxesPosition(int rowIndex, int newY);
     void setupBox(Fl_Box* box);
+    void updateAllRows();
 
 private:
     // Private members, buttons, input fields, etc.
