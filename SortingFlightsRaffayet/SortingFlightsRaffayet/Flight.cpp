@@ -29,7 +29,7 @@ string Flight::getFlightInfo() const {
 
 bool Flight::operator<(const Flight& other) const {
     // Primary comparison on departure time
-    if (compareTimes(this->departure, other.departure)) {
+    if (compareTimesLess(this->departure, other.departure)) {
         return true;
     }
     //else if (departure > other.departure) {
@@ -54,7 +54,34 @@ bool Flight::operator<(const Flight& other) const {
     return false;
 }
 
-bool compareTimes(const std::string& time1, const std::string& time2) {
+bool Flight::operator>(const Flight& other) const {
+    // Primary comparison on departure time
+    if (compareTimesMore(this->departure, other.departure)) {
+        return true;
+    }
+    //else if (departure > other.departure) {
+    //    return false;
+    //}
+    //// Secondary comparison on flight number
+    //if (flightNo < other.flightNo) {
+    //    return true;
+    //}
+    //else if (flightNo > other.flightNo) {
+    //    return false;
+    //}
+    //// Tertiary comparison on destination
+    //if (destination < other.destination) {
+    //    return true;
+    //}
+    //else if (destination > other.destination) {
+    //    return false;
+    //}
+    //// Last comparison on gate number
+    //return gateNo < other.gateNo;
+    return false;
+}
+
+bool compareTimesLess(const std::string& time1, const std::string& time2) {
     std::tm t1 = {};
     std::tm t2 = {};
 
@@ -75,6 +102,33 @@ bool compareTimes(const std::string& time1, const std::string& time2) {
         return true;
     }
     else if (t1.tm_hour == t2.tm_hour && t1.tm_min < t2.tm_min) {
+        return true;
+    }
+
+    return false;
+}
+
+bool compareTimesMore(const std::string& time1, const std::string& time2) {
+    std::tm t1 = {};
+    std::tm t2 = {};
+
+    std::istringstream ss1(time1);
+    std::istringstream ss2(time2);
+
+    ss1 >> std::get_time(&t1, "%H:%M");
+    ss2 >> std::get_time(&t2, "%H:%M");
+
+    // Check if parsing was successful
+    if (ss1.fail() || ss2.fail()) {
+        std::cerr << "Failed to parse time" << std::endl;
+        return false;
+    }
+
+    // Compare the times
+    if (t1.tm_hour > t2.tm_hour) {
+        return true;
+    }
+    else if (t1.tm_hour == t2.tm_hour && t1.tm_min > t2.tm_min) {
         return true;
     }
 

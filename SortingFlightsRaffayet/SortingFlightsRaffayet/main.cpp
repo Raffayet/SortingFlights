@@ -8,6 +8,7 @@
 #include "DataStorage.h"
 #include <vector>
 using std::vector;
+using namespace std;
 
 int main(int argc, char* argv[]) {
     CommandLineArgs args(argc, argv);
@@ -18,6 +19,7 @@ int main(int argc, char* argv[]) {
     // Assuming SortAlgorithm is properly implemented and create method exists
     /*SortAlgorithm* sortAlgorithm = SortAlgorithm::create(args.getSortAlgorithm());
     sortAlgorithm->sort(flights);*/
+    SortCriteria sortCriteria = SortCriteria();
     MyWindow myWindow(1000, 700, "Flight Sorter", flights);
     myWindow.setFlights(flights); // Method to pass flight data to the window
 

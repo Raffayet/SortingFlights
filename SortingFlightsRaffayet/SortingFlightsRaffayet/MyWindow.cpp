@@ -6,7 +6,8 @@
 #include <FL/Fl_Box.h>
 #include "SortCriteria.h"
 #include "SortAlgorithm.h"
-#include <vector>
+#include <stack>
+using namespace std;
 
 // Ovde morate da koristite potpis konstruktora koji ste definisali u .h fajlu
 MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsToShow)
@@ -37,10 +38,10 @@ MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsT
 
     sort_algorithm_choice = new Fl_Choice(650, 10, 120, 25); // Adjust position and size as needed
     sort_algorithm_choice->add("Selection Sort");
-    sort_algorithm_choice->add("Quick Sort");
-    sort_algorithm_choice->callback(cb_sort_criteria, this);
+    sort_algorithm_choice->add("Bubble Sort");
+    sort_algorithm_choice->callback(cb_sort_algorithm, this);
 
-    sortingCompleteLabel = new Fl_Box(160, 10, 120, 25);
+    sortingCompleteLabel = new Fl_Box(300, 300, 300, 300);
     sortingCompleteLabel->hide();
 
     this->end(); // End of adding widgets to the window
@@ -137,8 +138,6 @@ void MyWindow::returnPreviousColor(int upRowIndex, int downRowIndex) {
 }
 
 
-
-
 void MyWindow::animate() {
     if (isAnimating) {
         const float duration = 1.0; // Total duration of the animation in seconds
@@ -189,12 +188,7 @@ void MyWindow::updateAllRows() {
     }
 }
 
-void MyWindow::sort_pressed() {
-    if (!isSorting) {
-        i = 0;
-        isSorting = true;
-    }
-
+void MyWindow::selectionSort() {
     if (i < flightsToShow.size() - 1) {
         if (j <= flightsToShow.size()) {
             min_idx = i;
@@ -215,12 +209,69 @@ void MyWindow::sort_pressed() {
         }
         else {
             isSorting = false;
+            sortingCompleteLabel->label("Sorting Complete");
             sortingCompleteLabel->show();
         }
     }
     else {
         isSorting = false;
+        sortingCompleteLabel->label("Sorting Complete");
         sortingCompleteLabel->show();
+    }
+}
+
+void MyWindow::bubbleSort() {
+    if (!isSorting) {
+        // Initialize sorting parameters
+        i = 0;
+        j = 0;
+        isSorting = true;
+        return;
+    }
+
+    // Check if sorting is complete
+    if (i >= flightsToShow.size() - 1) {
+        isSorting = false;
+        sortingCompleteLabel->label("Sorting Complete");
+        sortingCompleteLabel->show();
+        return;
+    }
+
+    if (j < flightsToShow.size() - i - 1) {
+        if (flightsToShow[j] > flightsToShow[j + 1]) {
+            // Swap the flights and their positions
+            std::swap(flightsToShow[j], flightsToShow[j + 1]);
+            std::swap(rowPositions[j], rowPositions[j + 1]);
+
+            // Start the animation for this swap
+            startAnimation(j, j + 1);
+
+            // Prepare for next comparison
+            j++;
+            return; // Return here to allow the animation to complete before the next iteration
+        }
+        j++;
+    }
+    else {
+        // Move to the next pass
+        i++;
+        j = 0;
+    }
+}
+
+
+
+void MyWindow::sort_pressed() {
+    if (!isSorting) {
+        isSorting = true;
+    }
+
+    if (sortAlgorithm == SortAlgorithm::BubbleSort) {
+        bubbleSort();
+    }
+
+    else {
+        selectionSort();
     }
 }
 
@@ -246,39 +297,39 @@ void MyWindow::sort_criteria_changed() {
     int choice = sort_criteria_choice->value();
     switch (choice) {
     case 0:
-        sortCriteria = SortCriteria(SortField::DepartureTime);
+        SortCriteria::setCurrentSortField(SortField::DepartureTime);
         break;
     case 1:
-        sortCriteria = SortCriteria(SortField::Destination);
+        SortCriteria::setCurrentSortField(SortField::Destination);
         break;
     case 2:
-        sortCriteria = SortCriteria(SortField::FlightNumber);
+        SortCriteria::setCurrentSortField(SortField::FlightNumber);
         break;
     case 3:
-        sortCriteria = SortCriteria(SortField::GateNumber);
+        SortCriteria::setCurrentSortField(SortField::GateNumber);
         break;
     default:
         // Handle default case
         break;
     }
-
     // Add code to re-sort the flights or update the UI as needed
+    cout << SortCriteria::getCurrentSortFieldString() << endl;
 }
 
 void MyWindow::sort_algorithm_changed() {
     int choice = sort_algorithm_choice->value();
+    i = 0;
     switch (choice) {
     case 0:
         sortAlgorithm = SortAlgorithm::SelectionSort;
         break;
     case 1:
-        sortAlgorithm = SortAlgorithm::QuickSort;
+        sortAlgorithm = SortAlgorithm::BubbleSort;
         break;
     default:
         // Handle default case
         break;
     }
-
     // Add code to re-sort the flights or update the UI as needed
 }
 

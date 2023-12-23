@@ -3,7 +3,7 @@
 
 enum class SortAlgorithm {
     SelectionSort,
-    QuickSort
+    BubbleSort
 };
 
 #endif // SORTALGORITHM_H

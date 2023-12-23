@@ -134,7 +134,7 @@
     <ClInclude Include="DataStorage.h" />
     <ClInclude Include="Flight.h" />
     <ClInclude Include="MyWindow.h" />
-    <ClInclude Include="QuickSort.h" />
+    <ClInclude Include="BubbleSortMechanism.h" />
     <ClInclude Include="RowPosition.h" />
     <ClInclude Include="SelectionSort.h" />
     <ClInclude Include="SortAlgorithm.h" />
@@ -146,9 +146,10 @@
     <ClCompile Include="Flight.cpp" />
     <ClCompile Include="MyWindow.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="QuickSort.cpp" />
+    <ClCompile Include="BubbleSortMechanism.cpp" />
     <ClCompile Include="RowPoistion.cpp" />
     <ClCompile Include="SelectionSort.cpp" />
+    <ClCompile Include="SortCriteria.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="flights.txt" />

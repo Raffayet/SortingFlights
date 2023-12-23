@@ -53,6 +53,9 @@ public:
     void updateBoxesPosition(int rowIndex, int newY);
     void setupBox(Fl_Box* box);
     void updateAllRows();
+    void bubbleSort();
+    void selectionSort();
+    int partition(int low, int high);
 
 private:
     // Private members, buttons, input fields, etc.

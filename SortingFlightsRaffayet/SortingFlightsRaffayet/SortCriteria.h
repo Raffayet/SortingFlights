@@ -1,5 +1,6 @@
 #ifndef SORTCRITERIA_H
 #define SORTCRITERIA_H
+#include <string>
 
 enum class SortField {
     DepartureTime,
@@ -17,6 +18,7 @@ class SortCriteria {
 private:
     SortField sortField;
     SortOrder sortOrder;
+    static SortField currentSortField;
 
 public:
     // Default constructor
@@ -30,6 +32,9 @@ public:
 
     SortField getSortField() const { return sortField; }
     SortOrder getSortOrder() const { return sortOrder; }
+    static void setCurrentSortField(SortField sortField);
+
+    static std::string getCurrentSortFieldString();
 
     // Možete dodati dodatne metode ako su potrebne
 };
