@@ -35,6 +35,7 @@ public:
     static void setCurrentSortField(SortField sortField);
 
     static std::string getCurrentSortFieldString();
+    static SortField getCurrentSortField();
 
     // Možete dodati dodatne metode ako su potrebne
 };

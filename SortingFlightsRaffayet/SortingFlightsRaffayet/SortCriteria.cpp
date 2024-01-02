@@ -6,6 +6,10 @@ void SortCriteria::setCurrentSortField(SortField sortField) {
     currentSortField = sortField;
 }
 
+SortField SortCriteria::getCurrentSortField() {
+    return currentSortField;
+}
+
 std::string SortCriteria::getCurrentSortFieldString() {
     switch (currentSortField) {
     case SortField::DepartureTime:
