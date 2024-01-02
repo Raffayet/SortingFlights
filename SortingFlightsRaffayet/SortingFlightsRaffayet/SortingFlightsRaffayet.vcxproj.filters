@@ -42,6 +42,12 @@
     <ClInclude Include="RowPosition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="QuickSortState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FlightHistory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Flight.cpp">
@@ -76,5 +82,10 @@
     <None Include="flights.txt">
       <Filter>Resource Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="flights_history.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

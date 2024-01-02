@@ -7,6 +7,8 @@
 #include "SortCriteria.h"
 #include "SortAlgorithm.h"
 #include <stack>
+#include <fstream>
+#include "DataStorage.h"
 using namespace std;
 
 // Ovde morate da koristite potpis konstruktora koji ste definisali u .h fajlu
@@ -39,6 +41,7 @@ MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsT
     sort_algorithm_choice = new Fl_Choice(650, 10, 120, 25); // Adjust position and size as needed
     sort_algorithm_choice->add("Selection Sort");
     sort_algorithm_choice->add("Bubble Sort");
+    sort_algorithm_choice->add("Quick Sort");
     sort_algorithm_choice->callback(cb_sort_algorithm, this);
 
     sortingCompleteLabel = new Fl_Box(300, 300, 300, 300);
@@ -193,6 +196,7 @@ void MyWindow::selectionSort() {
         if (j <= flightsToShow.size()) {
             min_idx = i;
             for (j = i + 1; j < flightsToShow.size(); ++j) {
+                flightHistory.comparisonCount++;
                 if (flightsToShow[j] < flightsToShow[min_idx]) {
                     min_idx = j;
                 }
@@ -201,6 +205,7 @@ void MyWindow::selectionSort() {
             if (min_idx != i) {
                 std::swap(flightsToShow[min_idx], flightsToShow[i]);
                 std::swap(rowPositions[min_idx], rowPositions[i]);
+                flightHistory.movementCount++;
                 startAnimation(i, min_idx);
                 i++;
                 return;
@@ -238,11 +243,12 @@ void MyWindow::bubbleSort() {
     }
 
     if (j < flightsToShow.size() - i - 1) {
+        flightHistory.comparisonCount++;
         if (flightsToShow[j] > flightsToShow[j + 1]) {
             // Swap the flights and their positions
             std::swap(flightsToShow[j], flightsToShow[j + 1]);
             std::swap(rowPositions[j], rowPositions[j + 1]);
-
+            flightHistory.movementCount++;
             // Start the animation for this swap
             startAnimation(j, j + 1);
 
@@ -259,22 +265,98 @@ void MyWindow::bubbleSort() {
     }
 }
 
+void MyWindow::oneStepQuickSort() {
+    if (quickSortStack.empty()) return;
+
+    QuickSortState state = quickSortStack.top();
+    quickSortStack.pop();
+
+    if (state.low < state.high) {
+        int pivotIndex = partition(state.low, state.high);
+
+        if (pivotIndex - 1 > state.low) {
+            quickSortStack.push(QuickSortState(state.low, pivotIndex - 1));
+        }
+        if (pivotIndex + 1 < state.high) {
+            quickSortStack.push(QuickSortState(pivotIndex + 1, state.high));
+        }
+    }
+}
+
+void MyWindow::quickSort(int low, int high) {
+    if (low < high) {
+        // pi is partitioning index, arr[pi] is now at right place 
+        int pi = partition(low, high);
+
+        // Separately sort elements before partition and after partition
+        quickSort(low, pi - 1);
+        quickSort(pi + 1, high);
+    }
+}
+
+int MyWindow::partition(int low, int high) {
+    Flight pivot = flightsToShow[high]; // pivot
+    cout << "Pivot: " << pivot.departure << endl;
+    int i = (low - 1); // Index of smaller element
+
+    for (int j = low; j <= high - 1; j++) {
+        // If current element is smaller than the pivot
+        flightHistory.comparisonCount++;
+        if (flightsToShow[j] < pivot) {
+            i++; // increment index of smaller element
+            std::swap(flightsToShow[i], flightsToShow[j]);
+            std::swap(rowPositions[i], rowPositions[j]);
+            flightHistory.movementCount++;
+            // Optionally, start animation for this swap
+            startAnimation(i, j);
+        }
+    }
+    std::swap(flightsToShow[i + 1], flightsToShow[high]);
+    std::swap(rowPositions[i + 1], rowPositions[high]);
+    flightHistory.movementCount++;
+    // Optionally, start animation for this swap
+    startAnimation(i + 1, high);
+
+    return (i + 1);
+}
+
+// Call this method to start quick sort
+void MyWindow::startQuickSort() {
+    quickSort(0, flightsToShow.size() - 1);
+    sortingCompleteLabel->label("Sorting Complete");
+    sortingCompleteLabel->show();
+}
 
 
 void MyWindow::sort_pressed() {
     if (!isSorting) {
         isSorting = true;
+        quickSortStack.push(QuickSortState(0, flightsToShow.size() - 1));
     }
 
     if (sortAlgorithm == SortAlgorithm::BubbleSort) {
         bubbleSort();
     }
 
+    else if (sortAlgorithm == SortAlgorithm::QuickSort) {
+        if (!quickSortStack.empty()) {
+            oneStepQuickSort();
+        }
+        else {
+            isSorting = false; // Sorting is complete
+            sortingCompleteLabel->label("Sorting Complete");
+            sortingCompleteLabel->show();
+        }
+    }
+
     else {
         selectionSort();
     }
+    
+    flightHistory.flightMap[sortCount] = flightsToShow;
+    sortCount++;
+    DataStorage::writeSortedFlightHistoryToFile(DataStorage::flightsHistoryPath, flightHistory);
 }
-
 
 // Callback funkcija mora da odgovara deklaraciji u .h fajlu
 void MyWindow::cb_sort(Fl_Widget*, void* v) {
@@ -325,6 +407,9 @@ void MyWindow::sort_algorithm_changed() {
         break;
     case 1:
         sortAlgorithm = SortAlgorithm::BubbleSort;
+        break;
+    case 2:
+        sortAlgorithm = SortAlgorithm::QuickSort;
         break;
     default:
         // Handle default case

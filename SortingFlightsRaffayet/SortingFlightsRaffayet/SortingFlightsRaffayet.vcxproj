@@ -133,8 +133,10 @@
     <ClInclude Include="CommandLineArgs.h" />
     <ClInclude Include="DataStorage.h" />
     <ClInclude Include="Flight.h" />
+    <ClInclude Include="FlightHistory.h" />
     <ClInclude Include="MyWindow.h" />
     <ClInclude Include="BubbleSortMechanism.h" />
+    <ClInclude Include="QuickSortState.h" />
     <ClInclude Include="RowPosition.h" />
     <ClInclude Include="SelectionSort.h" />
     <ClInclude Include="SortAlgorithm.h" />
@@ -153,6 +155,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="flights.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="flights_history.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

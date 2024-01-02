@@ -4,10 +4,13 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <map>
+using namespace std;
 using std::vector;
 using std::string;
 
-const string DataStorage::flightsDataPath = "flights.txt";
+std::string DataStorage::flightsDataPath;
+std::string DataStorage::flightsHistoryPath;
 
 DataStorage::DataStorage(bool limitToTen) {
     std::ifstream file(flightsDataPath);
@@ -63,5 +66,25 @@ void DataStorage::printFlights() {
             << ", Destination: " << flight.destination
             << ", Departure Time: " << flight.departure
             << ", Gate Number: " << flight.gateNo << std::endl;
+    }
+}
+
+void DataStorage::writeSortedFlightHistoryToFile(const std::string& filename, FlightHistory flightHistory) {
+    std::ofstream outFile(filename);
+
+    if (outFile.is_open()) {
+        for (const auto& entry : flightHistory.flightMap) {
+            outFile << "Sort Count " << entry.first << ":\n";
+            for (const auto& flight : entry.second) {
+                outFile << flight.getFlightInfo() << "\n";
+            }
+            outFile << "\n"; // Add a blank line between different sort counts
+        }
+        outFile << "Number of comparisons: " << flightHistory.comparisonCount << endl;
+        outFile << "Number of movements: " << flightHistory.movementCount << endl;
+        outFile.close();
+    }
+    else {
+        std::cerr << "Unable to open file for writing: " << filename << "\n";
     }
 }

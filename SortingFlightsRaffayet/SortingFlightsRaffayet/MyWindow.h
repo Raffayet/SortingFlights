@@ -20,6 +20,10 @@
 // Include the header file for the Flight class or declare it
 #include "Flight.h" // Adjust this include to your specific file
 #include "RowPosition.h"
+#include <stack>
+#include "QuickSortState.h"
+#include <map>
+#include "FlightHistory.h"
 
 class MyWindow : public Fl_Window {
 public:
@@ -38,6 +42,8 @@ public:
     int firstAnimatedRow;
     int secondAnimatedRow;
     std::vector<RowPosition> rowPositions;
+    int sortCount = 0;
+    FlightHistory flightHistory;
 
     MyWindow(int w, int h, const char* title, std::vector<Flight> flightsToShow);
 
@@ -56,9 +62,13 @@ public:
     void bubbleSort();
     void selectionSort();
     int partition(int low, int high);
+    void startQuickSort();
+    void quickSort(int low, int high);
+    void oneStepQuickSort();
 
 private:
     // Private members, buttons, input fields, etc.
+    std::stack<QuickSortState> quickSortStack;
     Fl_Button* sort_button;
     Fl_Input* input_path;
     Fl_Output* output_path;
