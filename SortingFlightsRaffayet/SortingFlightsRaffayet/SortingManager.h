@@ -9,9 +9,9 @@ public:
     void startSorting();
     void finishSorting();
     bool sortingInProgress() const;
+    bool isSorting;
 
 private:
-    bool isSorting;
     static void closePopup(Fl_Widget* widget, void*);
     void showPopup(const char* message);
 };

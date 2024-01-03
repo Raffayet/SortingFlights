@@ -12,8 +12,8 @@
 using namespace std;
 
 // Ovde morate da koristite potpis konstruktora koji ste definisali u .h fajlu
-MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsToShow, DataStorage storage)
-    : Fl_Window(w, h, title), flightsToShow(flightsToShow), flightsStorage(storage), i(0), j(1), min_idx(0), isSorting(false) {
+MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsToShow, DataStorage storage, SortingManager sortingManager)
+    : Fl_Window(w, h, title), flightsToShow(flightsToShow), flightsStorage(storage), sortingManager(sortingManager), i(0), j(1), min_idx(0), isSorting(false) {
     // Inicijalizujte korisnički interfejs komponente ovde
     // Na primer, stvaranje dugmeta za sortiranje
     sort_button = new Fl_Button(50, 170, 80, 30, "Sort");

@@ -51,6 +51,12 @@
     <ClInclude Include="SortingManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SortingHistory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HistoryWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Flight.cpp">
@@ -81,6 +87,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SortingManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SortingHistory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HistoryWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

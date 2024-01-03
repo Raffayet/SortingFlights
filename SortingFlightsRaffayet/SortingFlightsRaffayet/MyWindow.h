@@ -50,7 +50,7 @@ public:
     int sortCount = 0;
     FlightHistory flightHistory;
 
-    MyWindow(int w, int h, const char* title, std::vector<Flight> flightsToShow, DataStorage storage);
+    MyWindow(int w, int h, const char* title, std::vector<Flight> flightsToShow, DataStorage storage, SortingManager sortingManager);
 
     // Methods for user interface
     void setFlights(const std::vector<Flight>& flights);
