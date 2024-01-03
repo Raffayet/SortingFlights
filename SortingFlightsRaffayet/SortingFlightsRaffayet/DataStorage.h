@@ -12,13 +12,14 @@ using std::vector;
 
 class DataStorage {
 public:
-    static std::string flightsDataPath;
-    static std::string flightsHistoryPath;
+    std::string flightsDataPath;
+    std::string flightsHistoryPath;
+    bool limitToTen;
 
-    DataStorage(bool limitToTen);
+    DataStorage(bool limitToTen, std::string flightsDataPath, std::string flightsHistoryPath);
 
     void addFlight(const Flight& flight);
-    const vector<Flight>& loadFlights() const;
+    vector<Flight>& loadFlights();
     void selectionSortFlights(const SortCriteria& criteria, SelectionSort& selectionSort);
     void saveToFile(const std::string& filename) const;
     void printFlights();

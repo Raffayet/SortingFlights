@@ -12,39 +12,42 @@
 using namespace std;
 
 // Ovde morate da koristite potpis konstruktora koji ste definisali u .h fajlu
-MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsToShow)
-    : Fl_Window(w, h, title), flightsToShow(flightsToShow), i(0), j(1), min_idx(0), isSorting(false) {
+MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsToShow, DataStorage storage)
+    : Fl_Window(w, h, title), flightsToShow(flightsToShow), flightsStorage(storage), i(0), j(1), min_idx(0), isSorting(false) {
     // Inicijalizujte korisnički interfejs komponente ovde
     // Na primer, stvaranje dugmeta za sortiranje
-    sort_button = new Fl_Button(10, 10, 80, 30, "Sort");
+    sort_button = new Fl_Button(50, 170, 80, 30, "Sort");
     sort_button->callback(cb_sort, this);
-
-    input_path = new Fl_Input(100, 10, 200, 30);
-    output_path = new Fl_Output(100, 50, 200, 30);
-    sort_menu = new Fl_Choice(100, 90, 200, 30);
-    scroll = new Fl_Scroll(10, 10, w - 20, h - 20);
+    input_path = new Fl_Input(100, 20, 210, 30, "Input Path");
+    output_path = new Fl_Input(450, 20, 210, 30, "Output Path");
+    confirmPathButton = new Fl_Button(800, 20, 100, 30, "Confirm path");
+    /*sort_menu = new Fl_Choice(100, 90, 200, 30);*/
+    scroll = new Fl_Scroll(10, 130, w - 20, h - 140);
     scroll->type(Fl_Scroll::VERTICAL_ALWAYS);
+    
+    Fl_Input* inputs[2] = { input_path, output_path };
+    confirmPathButton->callback(MyWindow::onChangePathButtonWrapper, this);
 
     int animationState = 0;
 
-    sort_criteria_label = new Fl_Box(130, 10, 120, 25, "Sort Criteria");
+    sort_criteria_label = new Fl_Box(180, 170, 120, 25, "Sort Criteria");
 
-    sort_criteria_choice = new Fl_Choice(250, 10, 120, 25); // Adjust position and size as needed
+    sort_criteria_choice = new Fl_Choice(300, 170, 120, 25); // Adjust position and size as needed
     sort_criteria_choice->add("Departure Time");
     sort_criteria_choice->add("Destination");
     sort_criteria_choice->add("Flight Number");
     sort_criteria_choice->add("Gate Number");
     sort_criteria_choice->callback(cb_sort_criteria, this);
 
-    sort_algorithm_label = new Fl_Box(520, 10, 120, 25, "Sort Algorithm");
+    sort_algorithm_label = new Fl_Box(520, 170, 120, 25, "Sort Algorithm");
 
-    sort_algorithm_choice = new Fl_Choice(650, 10, 120, 25); // Adjust position and size as needed
+    sort_algorithm_choice = new Fl_Choice(650, 170, 120, 25); // Adjust position and size as needed
     sort_algorithm_choice->add("Selection Sort");
     sort_algorithm_choice->add("Bubble Sort");
     sort_algorithm_choice->add("Quick Sort");
     sort_algorithm_choice->callback(cb_sort_algorithm, this);
 
-    sortingCompleteLabel = new Fl_Box(300, 300, 300, 300);
+    sortingCompleteLabel = new Fl_Box(300, 500, 300, 300);
     sortingCompleteLabel->hide();
 
     this->end(); // End of adding widgets to the window
@@ -52,6 +55,22 @@ MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsT
     // itd.
 
     // Ovde treba dodati ostale UI elemente...
+}
+
+void MyWindow::onChangePathButton(Fl_Widget*) {
+    std::cout << "Input File Path: " << input_path->value() << std::endl;
+    std::cout << "Output File Path: " << output_path->value() << std::endl;
+
+    flightsStorage.flightsDataPath = input_path->value();
+    flightsStorage.flightsHistoryPath = output_path->value();
+    vector<Flight> newFlights = flightsStorage.loadFlights();
+    this->setFlights(newFlights);
+}
+
+void MyWindow::onChangePathButtonWrapper(Fl_Widget* w, void* v) {
+    // Cast the void pointer back to MyWindow instance
+    MyWindow* window = static_cast<MyWindow*>(v);
+    window->onChangePathButton(w);
 }
 
 void MyWindow::startAnimation(int firstRowIndex, int secondRowIndex) {
@@ -355,7 +374,7 @@ void MyWindow::sort_pressed() {
     
     flightHistory.flightMap[sortCount] = flightsToShow;
     sortCount++;
-    DataStorage::writeSortedFlightHistoryToFile(DataStorage::flightsHistoryPath, flightHistory);
+    flightsStorage.writeSortedFlightHistoryToFile(flightsStorage.flightsHistoryPath, flightHistory);
 }
 
 // Callback funkcija mora da odgovara deklaraciji u .h fajlu
@@ -419,7 +438,7 @@ void MyWindow::sort_algorithm_changed() {
 }
 
 void MyWindow::setFlights(const std::vector<Flight>& flights) {
-    flightsToShow = flights;
+    this->flightsToShow = flights;
     const int colWidth = 220; // Width for each column
     const int boxHeight = 25;  // Height of the rows
     const int borderWidth = 1; // Width of the border
@@ -435,7 +454,7 @@ void MyWindow::setFlights(const std::vector<Flight>& flights) {
 
     // Initialize row positions
     const int startX = 50;    // Starting X position for the table
-    const int startY = 150;   // Starting Y position for the table
+    const int startY = 300;   // Starting Y position for the table
     const int spacingY = 5;   // Spacing between rows
     for (size_t i = 0; i < flightsToShow.size(); ++i) {
         rowPositions.push_back(RowPosition(startX, startY + i * (boxHeight + spacingY), colWidth, boxHeight));

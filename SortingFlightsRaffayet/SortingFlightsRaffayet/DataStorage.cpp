@@ -9,10 +9,18 @@ using namespace std;
 using std::vector;
 using std::string;
 
-std::string DataStorage::flightsDataPath;
-std::string DataStorage::flightsHistoryPath;
+DataStorage::DataStorage(bool limitToTen, std::string flightsDataPath, std::string flightsHistoryPath) {
+    this->flightsDataPath = flightsDataPath;
+    this->flightsHistoryPath = flightsHistoryPath;
+    this->limitToTen = limitToTen;
+}
 
-DataStorage::DataStorage(bool limitToTen) {
+void DataStorage::addFlight(const Flight& flight) {
+    loadedFlights.push_back(flight);
+}
+
+vector<Flight>& DataStorage::loadFlights() {
+    loadedFlights.clear();
     std::ifstream file(flightsDataPath);
     if (file.is_open()) {
         std::string line;
@@ -22,7 +30,7 @@ DataStorage::DataStorage(bool limitToTen) {
         int count = 0;
 
         while (std::getline(file, line)) {
-            if (count >= 10 && limitToTen == true) { // no limit if limitToTen params is false (testing purposes)
+            if (count >= 10 && this->limitToTen == true) { // no limit if limitToTen params is false (testing purposes)
                 break;
             }
             std::istringstream iss(line);
@@ -40,14 +48,6 @@ DataStorage::DataStorage(bool limitToTen) {
         }
         file.close();
     }
-}
-
-
-void DataStorage::addFlight(const Flight& flight) {
-    loadedFlights.push_back(flight);
-}
-
-const vector<Flight>& DataStorage::loadFlights() const {
     return loadedFlights;
 }
 

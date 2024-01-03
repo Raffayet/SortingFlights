@@ -1,650 +1,86 @@
 Sort Count 0:
 Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
 Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
 Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
 Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
 Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
+Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
+Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
+Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
+Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
+Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
 
 Sort Count 1:
 Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
 Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
 Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
 Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
 Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
+Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
+Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
+Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
+Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
+Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
 
 Sort Count 2:
 Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
 Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
 Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
 Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
 Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
+Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
+Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
+Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
+Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
+Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
 
 Sort Count 3:
 Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
 Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
 Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
 Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
 Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
+Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
+Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
+Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
+Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
+Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
 
 Sort Count 4:
 Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
 Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
 Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
+Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
 Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
+Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
+Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
+Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
+Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
+Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
 
 Sort Count 5:
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
 Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
+Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
 Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
+Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
 Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
+Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
+Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
+Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
+Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
+Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
 
 Sort Count 6:
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-
-Sort Count 7:
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 8:
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 9:
 Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
 Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 10:
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 11:
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 12:
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 13:
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 14:
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 15:
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 16:
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 17:
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 18:
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 19:
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 20:
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 21:
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 22:
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 23:
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 24:
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 25:
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 26:
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 27:
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 28:
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 29:
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 30:
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 31:
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 32:
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 33:
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 34:
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 35:
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 36:
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 37:
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 38:
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 39:
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 40:
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 41:
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
 Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
 Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
 Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
 Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 42:
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
+Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
 Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
 Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 43:
 Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
 
-Sort Count 44:
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 45:
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 46:
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 47:
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 48:
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 49:
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 50:
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 51:
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 52:
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Sort Count 53:
-Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
-Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
-Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
-Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
-Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
-Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
-Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
-Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
-Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
-Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
-
-Number of comparisons: 44
-Number of movements: 44
+Number of comparisons: 20
+Number of movements: 16

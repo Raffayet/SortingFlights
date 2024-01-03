@@ -15,6 +15,8 @@
 #include <vector>
 #include <memory>
 #include "SelectionSort.h"
+#include <FL/Fl_Input.H>
+#include "DataStorage.h"
 
 
 // Include the header file for the Flight class or declare it
@@ -27,6 +29,7 @@
 
 class MyWindow : public Fl_Window {
 public:
+    DataStorage flightsStorage;
     SortCriteria sortCriteria;
     SortAlgorithm sortAlgorithm;
     std::vector<Flight> flightsToShow;
@@ -45,7 +48,7 @@ public:
     int sortCount = 0;
     FlightHistory flightHistory;
 
-    MyWindow(int w, int h, const char* title, std::vector<Flight> flightsToShow);
+    MyWindow(int w, int h, const char* title, std::vector<Flight> flightsToShow, DataStorage storage);
 
     // Methods for user interface
     void setFlights(const std::vector<Flight>& flights);
@@ -65,13 +68,15 @@ public:
     void startQuickSort();
     void quickSort(int low, int high);
     void oneStepQuickSort();
+    void onChangePathButton(Fl_Widget*);
+    static void onChangePathButtonWrapper(Fl_Widget* w, void* v);
 
 private:
-    // Private members, buttons, input fields, etc.
     std::stack<QuickSortState> quickSortStack;
     Fl_Button* sort_button;
     Fl_Input* input_path;
-    Fl_Output* output_path;
+    Fl_Input* output_path;
+    Fl_Button* confirmPathButton;
     Fl_Choice* sort_menu;
     Fl_Scroll* scroll;
     std::vector<Fl_Box*> boxes;
