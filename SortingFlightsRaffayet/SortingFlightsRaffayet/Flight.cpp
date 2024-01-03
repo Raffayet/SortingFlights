@@ -61,29 +61,32 @@ bool Flight::operator<(const Flight& other) const {
 }
 
 bool Flight::operator>(const Flight& other) const {
-    // Primary comparison on departure time
-    if (compareTimesMore(this->departure, other.departure)) {
-        return true;
+    if (SortCriteria::getCurrentSortField() == SortField::DepartureTime) {
+        if (compareTimesMore(this->departure, other.departure)) {
+            return true;
+        }
     }
-    //else if (departure > other.departure) {
-    //    return false;
-    //}
-    //// Secondary comparison on flight number
-    //if (flightNo < other.flightNo) {
-    //    return true;
-    //}
-    //else if (flightNo > other.flightNo) {
-    //    return false;
-    //}
-    //// Tertiary comparison on destination
-    //if (destination < other.destination) {
-    //    return true;
-    //}
-    //else if (destination > other.destination) {
-    //    return false;
-    //}
-    //// Last comparison on gate number
-    //return gateNo < other.gateNo;
+    else if (SortCriteria::getCurrentSortField() == SortField::FlightNumber) {
+        if (flightNo > other.flightNo) {
+            return true;
+        }
+    }
+
+    else if (SortCriteria::getCurrentSortField() == SortField::Destination) {
+        if (destination > other.destination) {
+            return true;
+        }
+    }
+
+    else if (SortCriteria::getCurrentSortField() == SortField::GateNumber) {
+        return gateNo > other.gateNo;
+    }
+
+    else {
+        if (compareTimesLess(this->departure, other.departure)) {
+            return true;
+        }
+    }
     return false;
 }
 

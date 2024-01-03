@@ -26,10 +26,12 @@
 #include "QuickSortState.h"
 #include <map>
 #include "FlightHistory.h"
+#include "SortingManager.h"
 
 class MyWindow : public Fl_Window {
 public:
     DataStorage flightsStorage;
+    SortingManager sortingManager;
     SortCriteria sortCriteria;
     SortAlgorithm sortAlgorithm;
     std::vector<Flight> flightsToShow;

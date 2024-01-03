@@ -32,19 +32,21 @@ MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsT
 
     sort_criteria_label = new Fl_Box(180, 170, 120, 25, "Sort Criteria");
 
-    sort_criteria_choice = new Fl_Choice(300, 170, 120, 25); // Adjust position and size as needed
+    sort_criteria_choice = new Fl_Choice(300, 170, 160, 25); // Adjust position and size as needed
     sort_criteria_choice->add("Departure Time");
     sort_criteria_choice->add("Destination");
     sort_criteria_choice->add("Flight Number");
     sort_criteria_choice->add("Gate Number");
+    sort_criteria_choice->value(0);
     sort_criteria_choice->callback(cb_sort_criteria, this);
 
     sort_algorithm_label = new Fl_Box(520, 170, 120, 25, "Sort Algorithm");
 
-    sort_algorithm_choice = new Fl_Choice(650, 170, 120, 25); // Adjust position and size as needed
+    sort_algorithm_choice = new Fl_Choice(650, 170, 160, 25); // Adjust position and size as needed
     sort_algorithm_choice->add("Selection Sort");
     sort_algorithm_choice->add("Bubble Sort");
     sort_algorithm_choice->add("Quick Sort");
+    sort_algorithm_choice->value(0);
     sort_algorithm_choice->callback(cb_sort_algorithm, this);
 
     sortingCompleteLabel = new Fl_Box(300, 500, 300, 300);
@@ -232,32 +234,26 @@ void MyWindow::selectionSort() {
             i++;
         }
         else {
-            isSorting = false;
-            sortingCompleteLabel->label("Sorting Complete");
-            sortingCompleteLabel->show();
+            sortingManager.finishSorting();
         }
     }
     else {
-        isSorting = false;
-        sortingCompleteLabel->label("Sorting Complete");
-        sortingCompleteLabel->show();
+        sortingManager.finishSorting();
     }
 }
 
 void MyWindow::bubbleSort() {
-    if (!isSorting) {
+    if (!sortingManager.sortingInProgress()) {
         // Initialize sorting parameters
         i = 0;
         j = 0;
-        isSorting = true;
+        sortingManager.startSorting();
         return;
     }
 
     // Check if sorting is complete
     if (i >= flightsToShow.size() - 1) {
-        isSorting = false;
-        sortingCompleteLabel->label("Sorting Complete");
-        sortingCompleteLabel->show();
+        sortingManager.finishSorting();
         return;
     }
 
@@ -284,23 +280,36 @@ void MyWindow::bubbleSort() {
     }
 }
 
+
 void MyWindow::oneStepQuickSort() {
-    if (quickSortStack.empty()) return;
+    if (quickSortStack.empty()) {
+        sortingManager.finishSorting();
+        cout << "Sorting complete." << endl;
+        return;
+    }
 
     QuickSortState state = quickSortStack.top();
     quickSortStack.pop();
 
+    cout << "Current State: Low = " << state.low << ", High = " << state.high << endl;
+
     if (state.low < state.high) {
         int pivotIndex = partition(state.low, state.high);
+        cout << "Pivot Index: " << pivotIndex << " after partitioning between " << state.low << " and " << state.high << endl;
 
-        if (pivotIndex - 1 > state.low) {
+        // Ensure that the subarrays excluding the pivot are pushed onto the stack
+        if (pivotIndex > state.low) {
             quickSortStack.push(QuickSortState(state.low, pivotIndex - 1));
+            cout << "Pushing left subarray: Low = " << state.low << ", High = " << pivotIndex - 1 << endl;
         }
-        if (pivotIndex + 1 < state.high) {
+
+        if (pivotIndex < state.high) {
             quickSortStack.push(QuickSortState(pivotIndex + 1, state.high));
+            cout << "Pushing right subarray: Low = " << pivotIndex + 1 << ", High = " << state.high << endl;
         }
     }
 }
+
 
 void MyWindow::quickSort(int low, int high) {
     if (low < high) {
@@ -315,16 +324,17 @@ void MyWindow::quickSort(int low, int high) {
 
 int MyWindow::partition(int low, int high) {
     Flight pivot = flightsToShow[high]; // pivot
-    cout << "Pivot: " << pivot.departure << endl;
+    cout << "Partitioning with pivot at index " << high << " (Pivot: " << pivot.gateNo << ")" << endl;
     int i = (low - 1); // Index of smaller element
 
-    for (int j = low; j <= high - 1; j++) {
-        // If current element is smaller than the pivot
+    for (int j = low; j < high; j++) {
+        cout << "Comparing index " << j << " with pivot." << endl;
         flightHistory.comparisonCount++;
         if (flightsToShow[j] < pivot) {
             i++; // increment index of smaller element
             std::swap(flightsToShow[i], flightsToShow[j]);
             std::swap(rowPositions[i], rowPositions[j]);
+            cout << "Swapped index " << i << " with index " << j << endl;
             flightHistory.movementCount++;
             // Optionally, start animation for this swap
             startAnimation(i, j);
@@ -332,6 +342,7 @@ int MyWindow::partition(int low, int high) {
     }
     std::swap(flightsToShow[i + 1], flightsToShow[high]);
     std::swap(rowPositions[i + 1], rowPositions[high]);
+    cout << "Swapped pivot to index " << (i + 1) << endl;
     flightHistory.movementCount++;
     // Optionally, start animation for this swap
     startAnimation(i + 1, high);
@@ -339,17 +350,10 @@ int MyWindow::partition(int low, int high) {
     return (i + 1);
 }
 
-// Call this method to start quick sort
-void MyWindow::startQuickSort() {
-    quickSort(0, flightsToShow.size() - 1);
-    sortingCompleteLabel->label("Sorting Complete");
-    sortingCompleteLabel->show();
-}
-
 
 void MyWindow::sort_pressed() {
-    if (!isSorting) {
-        isSorting = true;
+    if (!sortingManager.sortingInProgress()) {
+        sortingManager.startSorting();
         quickSortStack.push(QuickSortState(0, flightsToShow.size() - 1));
     }
 
@@ -358,14 +362,7 @@ void MyWindow::sort_pressed() {
     }
 
     else if (sortAlgorithm == SortAlgorithm::QuickSort) {
-        if (!quickSortStack.empty()) {
-            oneStepQuickSort();
-        }
-        else {
-            isSorting = false; // Sorting is complete
-            sortingCompleteLabel->label("Sorting Complete");
-            sortingCompleteLabel->show();
-        }
+        oneStepQuickSort();
     }
 
     else {
@@ -532,8 +529,3 @@ void MyWindow::resetHighlighting() {
     }
 }
 
-
-
-
-
-// Nastavite sa definisanjem ostalih funkcija po potrebi...

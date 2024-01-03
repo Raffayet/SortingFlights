@@ -48,6 +48,9 @@
     <ClInclude Include="FlightHistory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SortingManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Flight.cpp">
@@ -75,6 +78,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SortCriteria.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SortingManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

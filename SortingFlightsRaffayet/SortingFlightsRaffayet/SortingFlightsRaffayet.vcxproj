@@ -141,6 +141,7 @@
     <ClInclude Include="SelectionSort.h" />
     <ClInclude Include="SortAlgorithm.h" />
     <ClInclude Include="SortCriteria.h" />
+    <ClInclude Include="SortingManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandLineArgs.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="RowPoistion.cpp" />
     <ClCompile Include="SelectionSort.cpp" />
     <ClCompile Include="SortCriteria.cpp" />
+    <ClCompile Include="SortingManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="flights.txt" />
