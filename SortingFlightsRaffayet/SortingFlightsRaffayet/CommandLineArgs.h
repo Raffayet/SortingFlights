@@ -1,14 +1,20 @@
+/*
+    Klasa za cuvanje argumenata komandne linije - koristi se za unos putanje do ulaznih letova i do izlaznog fajla koji cuva sortirane letove
+    Autor: Nikola Sovilj SW75/2019
+    Poslednja izmena: 04/01/2024
+*/
+
 #ifndef COMMANDLINEARGS_H
 #define COMMANDLINEARGS_H
-
 #include <string>
 #include "SortCriteria.h"
 #include <stdexcept>
+using namespace std;
 
 class CommandLineArgs {
 private:
-    static std::string inputPath;
-    static std::string outputPath;
+    static string inputPath;
+    static string outputPath;
 
 public:
     CommandLineArgs(int argc, char* argv[]) {
@@ -17,15 +23,16 @@ public:
             outputPath = argv[2];
         }
         else {
-            throw std::runtime_error("Insufficient command-line arguments provided. Expected input and output paths.");
+            //neodgovarajuc broj argumenata komandne linije
+            throw runtime_error("Insufficient command-line arguments provided. Expected input and output paths.");
         }
     }
 
-    static std::string getInputPath() {
+    static string getInputPath() {
         return inputPath;
     }
 
-    static std::string getOutputPath() {
+    static string getOutputPath() {
         return outputPath;
     }
 };

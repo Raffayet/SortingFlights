@@ -1,8 +1,16 @@
+/*
+    Pomocna klasa koja se koristi za snabdevanje informacijama o istoriji sortiranja letova - Implementacija
+    Autor: Nikola Sovilj SW75/2019
+    Poslednja izmena: 04/01/2024
+*/
+
 #include "SortingHistory.h"
 #include <fstream>
 #include <sstream>
 #include "HistoryWindow.h"
 #include <iostream>
+#include <regex>
+#include "HistoryItem.h"
 using namespace std;
 
 SortingHistory::SortingHistory(const string& file_path) {
@@ -10,6 +18,7 @@ SortingHistory::SortingHistory(const string& file_path) {
     createTableWindow(fileContent);
 }
 
+// Citanje iz fajla flights_history.txt
 string SortingHistory::readFileContent(const string& file_path) {
     ifstream file(file_path);
     stringstream buffer;
@@ -22,53 +31,57 @@ vector<vector<string>> SortingHistory::parseFile(const string& file_path) {
     ifstream file(file_path);
     string line;
 
-    // Parsing logic goes here
-
     return history;
 }
 
 void SortingHistory::createTableWindow(const string& flights_history) {
     auto lines = splitStringIntoLines(flights_history);
-    vector<string> firstBlockDestinations;
-    vector<string> lastBlockDestinations;
-
     vector<string> currentBlock;
-    bool isFirstBlock = true; // Flag to identify the first block
+    bool isFirstBlock = true; 
+    int numberOfIterations = 0;
+    regex sortCountRegex("Sort Count (\\d+):");
+    smatch match;
 
     for (const string& line : lines) {
-        if (line.empty() || line.find("Sort Count") != string::npos) {
+        if (regex_search(line, match, sortCountRegex)) {
+            numberOfIterations = stoi(match[1]);
             if (!currentBlock.empty()) {
                 if (isFirstBlock) {
-                    // For the first block, copy destinations to firstBlockDestinations
-                    firstBlockDestinations.clear(); // Clear to ensure it's empty
+                    initialBlockItems.clear();
                     for (const auto& blockLine : currentBlock) {
-                        firstBlockDestinations.push_back(extractDestination(blockLine));
+                        if (!blockLine.empty()) {
+                            string destination = extractDestination(blockLine);
+                            string flightNumber = extractFlightNumber(blockLine);
+                            HistoryItem historyItem(destination, flightNumber);
+                            initialBlockItems.push_back(historyItem);
+                        }
                     }
-                    isFirstBlock = false; // Set flag to false after processing the first block
+                    isFirstBlock = false;
                 }
 
-                // Always update lastBlockDestinations
-                lastBlockDestinations.clear(); // Clear previous block's destinations
+                finalSortedBlockItems.clear();
                 for (const auto& blockLine : currentBlock) {
-                    lastBlockDestinations.push_back(extractDestination(blockLine));
+                    if (!blockLine.empty()) {
+                        string destination = extractDestination(blockLine);
+                        string flightNumber = extractFlightNumber(blockLine);
+                        HistoryItem historyItem(destination, flightNumber);
+                        finalSortedBlockItems.push_back(historyItem);
+                    }
                 }
 
                 currentBlock.clear();
             }
         }
         else {
-            currentBlock.push_back(line);
+            if (!line.empty()) {
+                currentBlock.push_back(line);
+            }
         }
     }
 
-    // Create HistoryWindow with both the first and last block's destinations
-    HistoryWindow* window = new HistoryWindow(800, 600, "Sorting History", firstBlockDestinations, lastBlockDestinations);
+    HistoryWindow* window = new HistoryWindow(800, 600, "Sorting History", initialBlockItems, finalSortedBlockItems, numberOfIterations);
     window->end();
     window->show();
-}
-
-void SortingHistory::showHistory() {
-    // Placeholder for method to show the history window
 }
 
 vector<string> SortingHistory::splitStringIntoLines(const string& str) {
@@ -81,15 +94,33 @@ vector<string> SortingHistory::splitStringIntoLines(const string& str) {
     return lines;
 }
 
+// Izvlacenje destnacije iz ucitanih objekata letova
 string SortingHistory::extractDestination(const string& line) {
+    string destination = "";
     const string destinationPrefix = "Destination: ";
     size_t startPos = line.find(destinationPrefix);
     if (startPos != string::npos) {
         startPos += destinationPrefix.length();
         size_t endPos = line.find(",", startPos);
         if (endPos != string::npos) {
-            return line.substr(startPos, endPos - startPos);
+            destination = line.substr(startPos, endPos - startPos);
         }
     }
-    return ""; // Return empty string if not found
+
+    return destination;
+}
+
+// Izvlacenje broja leta iz ucitanih objekata letova
+string SortingHistory::extractFlightNumber(const string& line) {
+    string flightNumber = "";
+    const string flightNumberPrefix = "Flight Number: ";
+    size_t startPos = line.find(flightNumberPrefix);
+    if (startPos != string::npos) {
+        startPos += flightNumberPrefix.length();
+        size_t endPos = line.find(",", startPos);
+        if (endPos != string::npos) {
+            flightNumber = line.substr(startPos, endPos - startPos);
+        }
+    }
+    return flightNumber;
 }

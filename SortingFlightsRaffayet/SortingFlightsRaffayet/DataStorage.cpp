@@ -1,4 +1,10 @@
-﻿#include "DataStorage.h"
+﻿/*
+    Repozitorijum za upravljanje podacima o letovima - upis, citanje, printovanje itd.. - Implementacija
+    Autor: Nikola Sovilj SW75/2019
+    Poslednja izmena: 04/01/2024
+*/
+
+#include "DataStorage.h"
 #include <sstream>
 #include <fstream>
 #include <vector>
@@ -6,13 +12,16 @@
 #include <iostream>
 #include <map>
 using namespace std;
-using std::vector;
-using std::string;
 
-DataStorage::DataStorage(bool limitToTen, std::string flightsDataPath, std::string flightsHistoryPath) {
+/*
+    bool limitToTen - flag koji oznacava da li se ucitava samo 10 letova za reprezentaciju ili svi letovi iz fajla
+    flightsDataPath - putanja do fajla u kom se nalaze svi letovi za ucitavanje
+    flightsHistoryPath - putanja do fajla koji cuva svako stanje letova prilikom sortiranja
+*/
+DataStorage::DataStorage(bool limitToTen, string flightsDataPath, string flightsHistoryPath) {
     this->flightsDataPath = flightsDataPath;
     this->flightsHistoryPath = flightsHistoryPath;
-    this->limitToTen = limitToTen;
+    this->limitToTen = limitToTen; 
 }
 
 void DataStorage::addFlight(const Flight& flight) {
@@ -21,25 +30,25 @@ void DataStorage::addFlight(const Flight& flight) {
 
 vector<Flight>& DataStorage::loadFlights() {
     loadedFlights.clear();
-    std::ifstream file(flightsDataPath);
+    ifstream file(flightsDataPath);
     if (file.is_open()) {
-        std::string line;
+        string line;
 
-        std::getline(file, line);
+        getline(file, line);
 
         int count = 0;
 
-        while (std::getline(file, line)) {
-            if (count >= 10 && this->limitToTen == true) { // no limit if limitToTen params is false (testing purposes)
+        while (getline(file, line)) {
+            if (count >= numberOfRepresentingFlights && this->limitToTen == true) {
                 break;
             }
-            std::istringstream iss(line);
-            std::string flightNo, destination, departure, gateNo;
+            istringstream iss(line);
+            string flightNo, destination, departure, gateNo;
 
-            std::getline(iss, flightNo, ';');
-            std::getline(iss, destination, ';');
-            std::getline(iss, departure, ';');
-            std::getline(iss, gateNo, ';');
+            getline(iss, flightNo, ';');
+            getline(iss, destination, ';');
+            getline(iss, departure, ';');
+            getline(iss, gateNo, ';');
 
             Flight flight(flightNo, destination, departure, gateNo);
             loadedFlights.push_back(flight);
@@ -51,26 +60,20 @@ vector<Flight>& DataStorage::loadFlights() {
     return loadedFlights;
 }
 
-void DataStorage::selectionSortFlights(const SortCriteria& criteria, SelectionSort& selectionSort) {
-    selectionSort.sort(loadedFlights, criteria);
-}
-
-void DataStorage::saveToFile(const std::string& filename) const {
-    // Implement if needed
-}
-
-void DataStorage::printFlights() {
+//Pomocna funkcija za printovanje objekata tipa Flight
+void DataStorage::printFlights() { 
 
     for (const auto& flight : loadedFlights) {
-        std::cout << "Flight Number: " << flight.flightNo
+        cout << "Flight Number: " << flight.flightNo
             << ", Destination: " << flight.destination
             << ", Departure Time: " << flight.departure
-            << ", Gate Number: " << flight.gateNo << std::endl;
+            << ", Gate Number: " << flight.gateNo << endl;
     }
 }
 
-void DataStorage::writeSortedFlightHistoryToFile(const std::string& filename, FlightHistory flightHistory) {
-    std::ofstream outFile(filename);
+//Posle svake iteracije sortiranja, stanje letova se cuva u ovom fajlu
+void DataStorage::writeSortedFlightHistoryToFile(const string& filename, FlightHistory flightHistory) {
+    ofstream outFile(filename);
 
     if (outFile.is_open()) {
         for (const auto& entry : flightHistory.flightMap) {
@@ -78,13 +81,13 @@ void DataStorage::writeSortedFlightHistoryToFile(const std::string& filename, Fl
             for (const auto& flight : entry.second) {
                 outFile << flight.getFlightInfo() << "\n";
             }
-            outFile << "\n"; // Add a blank line between different sort counts
+            outFile << "\n";
         }
         outFile << "Number of comparisons: " << flightHistory.comparisonCount << endl;
         outFile << "Number of movements: " << flightHistory.movementCount << endl;
         outFile.close();
     }
     else {
-        std::cerr << "Unable to open file for writing: " << filename << "\n";
+        cerr << "Unable to open file for writing: " << filename << "\n";
     }
 }

@@ -1,25 +1,20 @@
-﻿#include "Flight.h"
+﻿/*
+    Model klasa za let - Implementacija
+    Autor: Nikola Sovilj SW75/2019
+    Poslednja izmena: 04/01/2024
+*/
+
+#include "Flight.h"
 #include <iostream>
 #include <sstream>
 #include <iomanip>
 #include <ctime>
 #include "SortCriteria.h"
+using namespace std;
 
-bool Flight::compare(const Flight& other) const {
-    if (this->departure != other.departure) {
-        return this->departure < other.departure;
-    }
-    else if (this->destination != other.destination) {
-        return this->destination < other.destination;
-    }
-    else if (this->flightNo != other.flightNo) {
-        return this->flightNo < other.flightNo;
-    }
-    else {
-        return this->gateNo < other.gateNo;
-    }
-}
-
+/*
+    Funkcija za ucitavanje "light" informacija o letu
+*/
 string Flight::getFlightInfo() const {
     return "Flight Number: " + this->flightNo +
         ", Destination: " + this->destination +
@@ -27,9 +22,10 @@ string Flight::getFlightInfo() const {
         ", Gate Number: " + this->gateNo;
 }
 
-
+/*
+    Override operator< funkcija za poredjenje dva objekta po operatoru <
+*/
 bool Flight::operator<(const Flight& other) const {
-    // Primary comparison on departure time
     if (SortCriteria::getCurrentSortField() == SortField::DepartureTime) {
         if (compareTimesLess(this->departure, other.departure)) {
             return true;
@@ -60,6 +56,10 @@ bool Flight::operator<(const Flight& other) const {
     return false;
 }
 
+
+/*
+    Override operator> funkcija za poredjenje dva objekta po operatoru >
+*/
 bool Flight::operator>(const Flight& other) const {
     if (SortCriteria::getCurrentSortField() == SortField::DepartureTime) {
         if (compareTimesMore(this->departure, other.departure)) {
@@ -90,19 +90,23 @@ bool Flight::operator>(const Flight& other) const {
     return false;
 }
 
-bool compareTimesLess(const std::string& time1, const std::string& time2) {
-    std::tm t1 = {};
-    std::tm t2 = {};
 
-    std::istringstream ss1(time1);
-    std::istringstream ss2(time2);
+/*
+    Override operator< funkcija za poredjenje dva objekta po operatoru < na osnovu poredjenja dva broja
+*/
+bool compareTimesLess(const string& time1, const string& time2) {
+    tm t1 = {};
+    tm t2 = {};
 
-    ss1 >> std::get_time(&t1, "%H:%M");
-    ss2 >> std::get_time(&t2, "%H:%M");
+    istringstream ss1(time1);
+    istringstream ss2(time2);
+
+    ss1 >> get_time(&t1, "%H:%M");
+    ss2 >> get_time(&t2, "%H:%M");
 
     // Check if parsing was successful
     if (ss1.fail() || ss2.fail()) {
-        std::cerr << "Failed to parse time" << std::endl;
+        cerr << "Failed to parse time" << endl;
         return false;
     }
 
@@ -117,23 +121,24 @@ bool compareTimesLess(const std::string& time1, const std::string& time2) {
     return false;
 }
 
-bool compareTimesMore(const std::string& time1, const std::string& time2) {
-    std::tm t1 = {};
-    std::tm t2 = {};
+/*
+    Override operator> funkcija za poredjenje dva objekta po operatoru > na osnovu poredjenja dva broja
+*/
+bool compareTimesMore(const string& time1, const string& time2) {
+    tm t1 = {};
+    tm t2 = {};
 
-    std::istringstream ss1(time1);
-    std::istringstream ss2(time2);
+    istringstream ss1(time1);
+    istringstream ss2(time2);
 
-    ss1 >> std::get_time(&t1, "%H:%M");
-    ss2 >> std::get_time(&t2, "%H:%M");
+    ss1 >> get_time(&t1, "%H:%M");
+    ss2 >> get_time(&t2, "%H:%M");
 
-    // Check if parsing was successful
     if (ss1.fail() || ss2.fail()) {
-        std::cerr << "Failed to parse time" << std::endl;
+        cerr << "Failed to parse time" << endl;
         return false;
     }
 
-    // Compare the times
     if (t1.tm_hour > t2.tm_hour) {
         return true;
     }

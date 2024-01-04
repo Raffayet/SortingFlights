@@ -1,4 +1,11 @@
-﻿#include "CommandLineArgs.h"
+﻿/*
+    Implementacija CommandLineArgs.h
+    Autor: Nikola Sovilj SW75/2019
+    Poslednja izmena: 04/01/2024
+*/
 
-std::string CommandLineArgs::inputPath;
-std::string CommandLineArgs::outputPath;
+#include "CommandLineArgs.h"
+using namespace std;
+
+string CommandLineArgs::inputPath;
+string CommandLineArgs::outputPath;

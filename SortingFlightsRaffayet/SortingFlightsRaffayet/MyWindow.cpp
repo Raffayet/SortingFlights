@@ -1,4 +1,10 @@
-﻿#include "MyWindow.h"
+﻿/*
+    Klasa koja sluzi za GUI prikaz procesa sortiranja letova, kao i izbora dodatnih parametara (kriterijuma, vrste algoritma sortitanja itd..) - Implementacija
+    Autor: Nikola Sovilj SW75/2019
+    Poslednja izmena: 04/01/2024
+*/
+
+#include "MyWindow.h"
 #include <vector>
 #include <string>
 #include "Flight.h"
@@ -12,16 +18,14 @@
 using namespace std;
 
 // Ovde morate da koristite potpis konstruktora koji ste definisali u .h fajlu
-MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsToShow, DataStorage storage, SortingManager sortingManager)
+MyWindow::MyWindow(int w, int h, const char* title, vector<Flight> flightsToShow, DataStorage storage, SortingManager sortingManager)
     : Fl_Window(w, h, title), flightsToShow(flightsToShow), flightsStorage(storage), sortingManager(sortingManager), i(0), j(1), min_idx(0), isSorting(false) {
-    // Inicijalizujte korisnički interfejs komponente ovde
-    // Na primer, stvaranje dugmeta za sortiranje
+    // Inicijalizacija korisničkog interfejsa komponente 
     sort_button = new Fl_Button(50, 170, 80, 30, "Sort");
     sort_button->callback(cb_sort, this);
     input_path = new Fl_Input(100, 20, 210, 30, "Input Path");
     output_path = new Fl_Input(450, 20, 210, 30, "Output Path");
     confirmPathButton = new Fl_Button(800, 20, 100, 30, "Confirm path");
-    /*sort_menu = new Fl_Choice(100, 90, 200, 30);*/
     scroll = new Fl_Scroll(10, 130, w - 20, h - 140);
     scroll->type(Fl_Scroll::VERTICAL_ALWAYS);
     
@@ -30,9 +34,10 @@ MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsT
 
     int animationState = 0;
 
+    //Izbor kriterijuma sortiranja
     sort_criteria_label = new Fl_Box(180, 170, 120, 25, "Sort Criteria");
 
-    sort_criteria_choice = new Fl_Choice(300, 170, 160, 25); // Adjust position and size as needed
+    sort_criteria_choice = new Fl_Choice(300, 170, 160, 25);
     sort_criteria_choice->add("Departure Time");
     sort_criteria_choice->add("Destination");
     sort_criteria_choice->add("Flight Number");
@@ -40,28 +45,24 @@ MyWindow::MyWindow(int w, int h, const char* title, std::vector<Flight> flightsT
     sort_criteria_choice->value(0);
     sort_criteria_choice->callback(cb_sort_criteria, this);
 
+    //Izbor algoritma za sortiranje
     sort_algorithm_label = new Fl_Box(520, 170, 120, 25, "Sort Algorithm");
 
-    sort_algorithm_choice = new Fl_Choice(650, 170, 160, 25); // Adjust position and size as needed
+    sort_algorithm_choice = new Fl_Choice(650, 170, 160, 25);
     sort_algorithm_choice->add("Selection Sort");
     sort_algorithm_choice->add("Bubble Sort");
     sort_algorithm_choice->add("Quick Sort");
     sort_algorithm_choice->value(0);
     sort_algorithm_choice->callback(cb_sort_algorithm, this);
 
-    sortingCompleteLabel = new Fl_Box(300, 500, 300, 300);
-    sortingCompleteLabel->hide();
-
-    this->end(); // End of adding widgets to the window
-    this->show(); // Show the window
-    // itd.
-
-    // Ovde treba dodati ostale UI elemente...
+    this->end();
+    this->show();
 }
 
+//Funkcije koje omogucuju menjanje putanje ulaznog i izlaznog fajla - time se resetuje stanje tabele i opet pocinje proces citanja iz fajla
 void MyWindow::onChangePathButton(Fl_Widget*) {
-    std::cout << "Input File Path: " << input_path->value() << std::endl;
-    std::cout << "Output File Path: " << output_path->value() << std::endl;
+    cout << "Input File Path: " << input_path->value() << endl;
+    cout << "Output File Path: " << output_path->value() << endl;
 
     flightsStorage.flightsDataPath = input_path->value();
     flightsStorage.flightsHistoryPath = output_path->value();
@@ -70,19 +71,22 @@ void MyWindow::onChangePathButton(Fl_Widget*) {
 }
 
 void MyWindow::onChangePathButtonWrapper(Fl_Widget* w, void* v) {
-    // Cast the void pointer back to MyWindow instance
     MyWindow* window = static_cast<MyWindow*>(v);
     window->onChangePathButton(w);
 }
 
+/*
+    Funkcija za animiranje sporog menjanja pozicija dva leta
+    int firstRowIndex - indeks prvog leta za promenu pozicije
+    int secondRowIndex - indeks drugog leta za promenu pozicije
+*/
 void MyWindow::startAnimation(int firstRowIndex, int secondRowIndex) {
     originalColors.clear();
 
     firstAnimatedRow = firstRowIndex;
     secondAnimatedRow = secondRowIndex;
 
-    // Store colors for the specified rows
-    int startIndexFirstRow = firstRowIndex * 4; // Assuming 4 boxes per row
+    int startIndexFirstRow = firstRowIndex * 4; 
     int startIndexSecondRow = secondRowIndex * 4;
 
     for (int i = startIndexFirstRow; i < startIndexFirstRow + 4; ++i) {
@@ -99,11 +103,17 @@ void MyWindow::startAnimation(int firstRowIndex, int secondRowIndex) {
 
 void MyWindow::animate_callback(void* data) {
     MyWindow* window = static_cast<MyWindow*>(data);
-    window->animate(); // Call the member function to handle animation logic
+    window->animate();
 }
 
+
+/*
+    Funkcija za azuriranje pozicija letova nakon njihovog menjanja
+    int upRowIndex - indeks leta koji se penje ka gore
+    int downRowIndex - indeks leta koji se spusta na dole
+    float progress - brzina animacije - poboljsava UI
+*/
 void MyWindow::updateRow(int upRowIndex, int downRowIndex, float progress) {
-    // Dobijanje početnih i krajnjih pozicija iz rowPositions
     RowPosition& startUpPos = rowPositions[upRowIndex];
     RowPosition& startDownPos = rowPositions[downRowIndex];
 
@@ -135,27 +145,25 @@ void MyWindow::updateRow(int upRowIndex, int downRowIndex, float progress) {
         }
     }
 
-    // Redraw the scroll to update the view
     scroll->redraw();
 }
 
+// Menjanje boje kada animacija za dva leta prestane - letovi koji su u procesu menjanja su obojeni crvenom bojom
 void MyWindow::returnPreviousColor(int upRowIndex, int downRowIndex) {
-    // Reset colors for the up-moving row
     for (int i = 0; i < 4; ++i) {
         int boxIndex = upRowIndex * 4 + i;
         if (boxIndex < boxes.size()) {
             Fl_Box* box = boxes[boxIndex];
-            box->color(originalColors[i]); // Use the first 4 colors for up row
+            box->color(originalColors[i]); 
             box->redraw();
         }
     }
 
-    // Reset colors for the down-moving row
     for (int i = 0; i < 4; ++i) {
         int boxIndex = downRowIndex * 4 + i;
         if (boxIndex < boxes.size()) {
             Fl_Box* box = boxes[boxIndex];
-            box->color(originalColors[i + 4]); // Use the next 4 colors for down row
+            box->color(originalColors[i + 4]);
             box->redraw();
         }
     }
@@ -164,37 +172,29 @@ void MyWindow::returnPreviousColor(int upRowIndex, int downRowIndex) {
 
 void MyWindow::animate() {
     if (isAnimating) {
-        const float duration = 1.0; // Total duration of the animation in seconds
+        const float duration = 1.0; 
         animationProgress += 0.05f / duration;
 
         if (animationProgress >= 1.0) {
-            // Clamp the progress and end the animation
             animationProgress = 1.0;
             isAnimating = false;
 
-            // Zamena pozicija u rowPositions
-            std::swap(rowPositions[firstAnimatedRow], rowPositions[secondAnimatedRow]);
+            swap(rowPositions[firstAnimatedRow], rowPositions[secondAnimatedRow]);
 
-            // Reset colors to their original values after the animation ends
             returnPreviousColor(firstAnimatedRow, secondAnimatedRow);
 
-            // Osvežavanje položaja svih box-ova na osnovu novih rowPositions
             updateAllRows();
         }
         else {
-            // Update the row positions based on the current progress
             updateRow(firstAnimatedRow, secondAnimatedRow, animationProgress);
         }
 
-        // Redraw the window to reflect the changes
         redraw();
 
         if (isAnimating) {
-            // Schedule the next frame of the animation
             Fl::repeat_timeout(0.05, animate_callback, this);
         }
         else {
-            // Here you could start another animation if needed, or perform other actions
         }
     }
 }
@@ -212,6 +212,7 @@ void MyWindow::updateAllRows() {
     }
 }
 
+// Funkcija za implementaciju Selection sort algoritma - najbrzi, jer ima najmanji broj poredjenja, uzima min i max elemenat za svaku iteraciju
 void MyWindow::selectionSort() {
     if (i < flightsToShow.size() - 1) {
         if (j <= flightsToShow.size()) {
@@ -224,9 +225,11 @@ void MyWindow::selectionSort() {
             }
 
             if (min_idx != i) {
-                std::swap(flightsToShow[min_idx], flightsToShow[i]);
-                std::swap(rowPositions[min_idx], rowPositions[i]);
+                // Prvo se promene pozicije dva leta
+                swap(flightsToShow[min_idx], flightsToShow[i]);
+                swap(rowPositions[min_idx], rowPositions[i]);
                 flightHistory.movementCount++;
+                // Nakon toga, sledi prikaz njihovog menjanja pomocu funkcije za animiranje
                 startAnimation(i, min_idx);
                 i++;
                 return;
@@ -242,6 +245,7 @@ void MyWindow::selectionSort() {
     }
 }
 
+// Funkcija za implementaciju Bubble sort algoritma - najlaksi za implementaciju ali je najsporiji, poredi svaki sa svakim i manji pomera na gore a veci na dole
 void MyWindow::bubbleSort() {
     if (!sortingManager.sortingInProgress()) {
         // Initialize sorting parameters
@@ -251,7 +255,6 @@ void MyWindow::bubbleSort() {
         return;
     }
 
-    // Check if sorting is complete
     if (i >= flightsToShow.size() - 1) {
         sortingManager.finishSorting();
         return;
@@ -260,21 +263,16 @@ void MyWindow::bubbleSort() {
     if (j < flightsToShow.size() - i - 1) {
         flightHistory.comparisonCount++;
         if (flightsToShow[j] > flightsToShow[j + 1]) {
-            // Swap the flights and their positions
-            std::swap(flightsToShow[j], flightsToShow[j + 1]);
-            std::swap(rowPositions[j], rowPositions[j + 1]);
+            swap(flightsToShow[j], flightsToShow[j + 1]);
+            swap(rowPositions[j], rowPositions[j + 1]);
             flightHistory.movementCount++;
-            // Start the animation for this swap
             startAnimation(j, j + 1);
-
-            // Prepare for next comparison
             j++;
-            return; // Return here to allow the animation to complete before the next iteration
+            return;
         }
         j++;
     }
     else {
-        // Move to the next pass
         i++;
         j = 0;
     }
@@ -284,73 +282,60 @@ void MyWindow::bubbleSort() {
 void MyWindow::oneStepQuickSort() {
     if (quickSortStack.empty()) {
         sortingManager.finishSorting();
-        cout << "Sorting complete." << endl;
         return;
     }
 
     QuickSortState state = quickSortStack.top();
     quickSortStack.pop();
 
-    cout << "Current State: Low = " << state.low << ", High = " << state.high << endl;
-
     if (state.low < state.high) {
         int pivotIndex = partition(state.low, state.high);
-        cout << "Pivot Index: " << pivotIndex << " after partitioning between " << state.low << " and " << state.high << endl;
 
-        // Ensure that the subarrays excluding the pivot are pushed onto the stack
         if (pivotIndex > state.low) {
             quickSortStack.push(QuickSortState(state.low, pivotIndex - 1));
-            cout << "Pushing left subarray: Low = " << state.low << ", High = " << pivotIndex - 1 << endl;
         }
 
         if (pivotIndex < state.high) {
             quickSortStack.push(QuickSortState(pivotIndex + 1, state.high));
-            cout << "Pushing right subarray: Low = " << pivotIndex + 1 << ", High = " << state.high << endl;
         }
     }
 }
 
-
+// Funkcija za implementaciju Quick sort algoritma - brzi od buble sort-a, a sporiji od selection sort-a. Koristi pivot element za poredjenje
 void MyWindow::quickSort(int low, int high) {
     if (low < high) {
-        // pi is partitioning index, arr[pi] is now at right place 
         int pi = partition(low, high);
 
-        // Separately sort elements before partition and after partition
         quickSort(low, pi - 1);
         quickSort(pi + 1, high);
     }
 }
 
 int MyWindow::partition(int low, int high) {
-    Flight pivot = flightsToShow[high]; // pivot
-    cout << "Partitioning with pivot at index " << high << " (Pivot: " << pivot.gateNo << ")" << endl;
-    int i = (low - 1); // Index of smaller element
+    Flight pivot = flightsToShow[high];
+    int i = (low - 1);
 
     for (int j = low; j < high; j++) {
-        cout << "Comparing index " << j << " with pivot." << endl;
         flightHistory.comparisonCount++;
         if (flightsToShow[j] < pivot) {
-            i++; // increment index of smaller element
-            std::swap(flightsToShow[i], flightsToShow[j]);
-            std::swap(rowPositions[i], rowPositions[j]);
-            cout << "Swapped index " << i << " with index " << j << endl;
+            i++;
+            swap(flightsToShow[i], flightsToShow[j]);
+            swap(rowPositions[i], rowPositions[j]);
             flightHistory.movementCount++;
-            // Optionally, start animation for this swap
             startAnimation(i, j);
         }
     }
-    std::swap(flightsToShow[i + 1], flightsToShow[high]);
-    std::swap(rowPositions[i + 1], rowPositions[high]);
+    swap(flightsToShow[i + 1], flightsToShow[high]);
+    swap(rowPositions[i + 1], rowPositions[high]);
     cout << "Swapped pivot to index " << (i + 1) << endl;
     flightHistory.movementCount++;
-    // Optionally, start animation for this swap
     startAnimation(i + 1, high);
 
     return (i + 1);
 }
 
 
+// Funkcija koja se okida kada se pritisne dugme sort za prikaz naredne iteracije sortiranja
 void MyWindow::sort_pressed() {
     if (!sortingManager.sortingInProgress()) {
         sortingManager.startSorting();
@@ -371,6 +356,7 @@ void MyWindow::sort_pressed() {
     
     flightHistory.flightMap[sortCount] = flightsToShow;
     sortCount++;
+    //Nakon svake iteracije sortiranja, belezi se stanje liste letova i cuva u flights_history.txt fajl
     flightsStorage.writeSortedFlightHistoryToFile(flightsStorage.flightsHistoryPath, flightHistory);
 }
 
@@ -407,10 +393,8 @@ void MyWindow::sort_criteria_changed() {
         SortCriteria::setCurrentSortField(SortField::GateNumber);
         break;
     default:
-        // Handle default case
         break;
     }
-    // Add code to re-sort the flights or update the UI as needed
     cout << SortCriteria::getCurrentSortFieldString() << endl;
 }
 
@@ -428,20 +412,17 @@ void MyWindow::sort_algorithm_changed() {
         sortAlgorithm = SortAlgorithm::QuickSort;
         break;
     default:
-        // Handle default case
         break;
     }
-    // Add code to re-sort the flights or update the UI as needed
 }
 
 void MyWindow::setFlights(const std::vector<Flight>& flights) {
     this->flightsToShow = flights;
-    const int colWidth = 220; // Width for each column
-    const int boxHeight = 25;  // Height of the rows
-    const int borderWidth = 1; // Width of the border
-    const int numCols = 4;     // Number of columns
+    const int colWidth = 220; 
+    const int boxHeight = 25;  
+    const int borderWidth = 1;
+    const int numCols = 4;    
 
-    // Clear previous widgets and positions
     for (auto* box : boxes) {
         scroll->remove(box);
         delete box;
@@ -449,15 +430,14 @@ void MyWindow::setFlights(const std::vector<Flight>& flights) {
     boxes.clear();
     rowPositions.clear();
 
-    // Initialize row positions
-    const int startX = 50;    // Starting X position for the table
-    const int startY = 300;   // Starting Y position for the table
-    const int spacingY = 5;   // Spacing between rows
+    const int startX = 50;   
+    const int startY = 300;   
+    const int spacingY = 5; 
     for (size_t i = 0; i < flightsToShow.size(); ++i) {
         rowPositions.push_back(RowPosition(startX, startY + i * (boxHeight + spacingY), colWidth, boxHeight));
     }
 
-    // Create and add boxes for each flight
+    // Inicijalizacija tabele koja prikazuje letove
     for (size_t i = 0; i < flightsToShow.size(); ++i) {
         RowPosition& pos = rowPositions[i];
         int x = pos.x;
@@ -477,7 +457,6 @@ void MyWindow::setFlights(const std::vector<Flight>& flights) {
         Fl_Box* gateNoBox = new Fl_Box(x, pos.y, colWidth, boxHeight, flightsToShow[i].gateNo.c_str());
         setupBox(gateNoBox);
 
-        // Add the boxes to the vector and the scroll
         boxes.push_back(flightNoBox);
         boxes.push_back(destinationBox);
         boxes.push_back(departureBox);
@@ -499,16 +478,17 @@ void MyWindow::setupBox(Fl_Box* box) {
     box->redraw();
 }
 
-
+/*
+    Funkcija za boldovanje redova (letova) koji menjaju poziciju unutar tabele - oznaceni su crvenom bojom tokom animacije
+    int row1, int row2 - Redovi u tabeli koji menjaju pozicije
+*/
 void MyWindow::highlightRows(int row1, int row2) {
-    Fl_Color highlightColor = FL_RED; // Color for highlighting
+    Fl_Color highlightColor = FL_RED;
 
-    // Calculate the index for each box in the rows
-    int boxIndex1 = row1 * 4; // Assuming 4 boxes per row
+    int boxIndex1 = row1 * 4; 
     int boxIndex2 = row2 * 4;
 
-    // Highlight the boxes in the specified rows
-    for (int i = 0; i < 4; ++i) { // Loop through each box in the row
+    for (int i = 0; i < 4; ++i) { 
         if (boxIndex1 + i < boxes.size()) {
             boxes[boxIndex1 + i]->color(highlightColor);
             boxes[boxIndex1 + i]->redraw();
@@ -521,7 +501,7 @@ void MyWindow::highlightRows(int row1, int row2) {
 }
 
 void MyWindow::resetHighlighting() {
-    Fl_Color defaultColor = FL_WHITE; // Default color
+    Fl_Color defaultColor = FL_WHITE;
 
     for (auto* box : boxes) {
         box->color(defaultColor);

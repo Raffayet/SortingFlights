@@ -22,5 +22,17 @@ Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F
 Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
 Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
 
-Number of comparisons: 17
-Number of movements: 2
+Sort Count 2:
+Flight Number: AF342, Destination: WASHINGTON, Departure Time: 7:45, Gate Number: A3
+Flight Number: AA224, Destination: SYDNEY, Departure Time: 8:20, Gate Number: A7
+Flight Number: QU607, Destination: TORONTO, Departure Time: 8:30, Gate Number: F2
+Flight Number: VI303, Destination: ACAPULCO, Departure Time: 19:00, Gate Number: B4
+Flight Number: BA087, Destination: LONDON, Departure Time: 17:45, Gate Number: B4
+Flight Number: AA342, Destination: PARIS, Departure Time: 16:00, Gate Number: A7
+Flight Number: VI309, Destination: PRAGUE, Departure Time: 13:20, Gate Number: F2
+Flight Number: AA220, Destination: LONDON, Departure Time: 20:30, Gate Number: B4
+Flight Number: BA036, Destination: DALLAS, Departure Time: 21:00, Gate Number: A3
+Flight Number: AA223, Destination: LAS VEGAS, Departure Time: 21:15, Gate Number: A3
+
+Number of comparisons: 24
+Number of movements: 3

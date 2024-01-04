@@ -1,6 +1,13 @@
-#include "SortCriteria.h"
+/*
+    Enumeracije kriterijuma sortiranja koji su se koristili u ovom projektu - Implementacija
+    Autor: Nikola Sovilj SW75/2019
+    Poslednja izmena: 04/01/2024
+*/
 
-SortField SortCriteria::currentSortField = SortField::DepartureTime; // Static member definition
+#include "SortCriteria.h"
+using namespace std;
+
+SortField SortCriteria::currentSortField = SortField::DepartureTime;
 
 void SortCriteria::setCurrentSortField(SortField sortField) {
     currentSortField = sortField;
@@ -10,7 +17,8 @@ SortField SortCriteria::getCurrentSortField() {
     return currentSortField;
 }
 
-std::string SortCriteria::getCurrentSortFieldString() {
+
+string SortCriteria::getCurrentSortFieldString() {
     switch (currentSortField) {
     case SortField::DepartureTime:
         return "Departure Time";

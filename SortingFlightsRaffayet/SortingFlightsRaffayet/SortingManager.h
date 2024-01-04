@@ -1,3 +1,9 @@
+/*
+    Klasa koja upravlja stanjem sortiranja
+    Autor: Nikola Sovilj SW75/2019
+    Poslednja izmena: 04/01/2024
+*/
+
 #ifndef SORTINGMANAGER_H
 #define SORTINGMANAGER_H
 

@@ -1,6 +1,13 @@
+/*
+    Enumeracije kriterijuma sortiranja koji su se koristili u ovom projektu
+    Autor: Nikola Sovilj SW75/2019
+    Poslednja izmena: 04/01/2024
+*/
+
 #ifndef SORTCRITERIA_H
 #define SORTCRITERIA_H
 #include <string>
+using namespace std;
 
 enum class SortField {
     DepartureTime,
@@ -26,7 +33,6 @@ public:
 
     SortCriteria(SortField field): sortField(field), sortOrder(SortOrder::Ascending) {}
 
-    // Parameterized constructor
     SortCriteria(SortField field, SortOrder order)
         : sortField(field), sortOrder(order) {}
 
@@ -34,10 +40,8 @@ public:
     SortOrder getSortOrder() const { return sortOrder; }
     static void setCurrentSortField(SortField sortField);
 
-    static std::string getCurrentSortFieldString();
+    static string getCurrentSortFieldString();
     static SortField getCurrentSortField();
-
-    // Možete dodati dodatne metode ako su potrebne
 };
 
 #endif // SORTCRITERIA_H

@@ -1,7 +1,13 @@
-﻿#ifndef FLIGHT_H
+﻿/*
+    Model klasa za let
+    Autor: Nikola Sovilj SW75/2019
+    Poslednja izmena: 04/01/2024
+*/
+
+#ifndef FLIGHT_H
 #define FLIGHT_H
 #include <string>
-using std::string;
+using namespace std;
 
 class Flight {
     public:
@@ -12,14 +18,13 @@ class Flight {
         Flight(const string& flightNo, const string& destination,
             const string& departure, const string& gateNo)
             : flightNo(flightNo), destination(destination), departure(departure), gateNo(gateNo) {}
-
-        bool compare(const Flight& other) const;    
+  
         bool operator<(const Flight& other) const;
         bool operator>(const Flight& other) const;
         string getFlightInfo() const;
 
 
 };
-bool compareTimesLess(const std::string& time1, const std::string& time2);  // Declare as standalone
-bool compareTimesMore(const std::string& time1, const std::string& time2);  // Declare as standalone
+bool compareTimesLess(const string& time1, const string& time2);  // funkcija koja imitira operator < na osnovu poredjenja dva broja
+bool compareTimesMore(const string& time1, const string& time2);  // funkcija koja imitira operator > na osnovu poredjenja dva broja
 #endif // FLIGHT_H

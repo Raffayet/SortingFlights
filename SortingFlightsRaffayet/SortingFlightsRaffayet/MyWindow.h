@@ -1,4 +1,10 @@
-﻿#ifndef MYWINDOW_H
+﻿/*
+    Klasa koja sluzi za GUI prikaz procesa sortiranja letova, kao i izbora dodatnih parametara (kriterijuma, vrste algoritma sortitanja itd..)
+    Autor: Nikola Sovilj SW75/2019
+    Poslednja izmena: 04/01/2024
+*/
+
+#ifndef MYWINDOW_H
 #define MYWINDOW_H
 
 #include <FL/Fl.h>
@@ -14,19 +20,16 @@
 #include "SortAlgorithm.h"
 #include <vector>
 #include <memory>
-#include "SelectionSort.h"
 #include <FL/Fl_Input.H>
 #include "DataStorage.h"
-
-
-// Include the header file for the Flight class or declare it
-#include "Flight.h" // Adjust this include to your specific file
+#include "Flight.h" 
 #include "RowPosition.h"
 #include <stack>
 #include "QuickSortState.h"
 #include <map>
 #include "FlightHistory.h"
 #include "SortingManager.h"
+using namespace std;
 
 class MyWindow : public Fl_Window {
 public:
@@ -34,26 +37,25 @@ public:
     SortingManager sortingManager;
     SortCriteria sortCriteria;
     SortAlgorithm sortAlgorithm;
-    std::vector<Flight> flightsToShow;
-    size_t i, j, min_idx;  // Variables to keep track of sorting state
-    bool isSorting;
+    vector<Flight> flightsToShow;
+    size_t i, j, min_idx; //indeksi koji se koriste za cuvanje stanja liste letova prilikom sortiranja
+    bool isSorting; //indikator koji oznacava da li je sortiranje u toku
 
-    Fl_Box* sortingCompleteLabel;
     int animationState = 0;
     bool isAnimating = false;
     float animationProgress = 0.0;
     int animatingRow1 = -1, animatingRow2 = -1;
-    std::vector<Fl_Color> originalColors;
+    vector<Fl_Color> originalColors;
     int firstAnimatedRow;
     int secondAnimatedRow;
-    std::vector<RowPosition> rowPositions;
+    vector<RowPosition> rowPositions;
     int sortCount = 0;
     FlightHistory flightHistory;
 
-    MyWindow(int w, int h, const char* title, std::vector<Flight> flightsToShow, DataStorage storage, SortingManager sortingManager);
+    MyWindow(int w, int h, const char* title, vector<Flight> flightsToShow, DataStorage storage, SortingManager sortingManager);
 
-    // Methods for user interface
-    void setFlights(const std::vector<Flight>& flights);
+    // Metode koje se koriste u svrhu animiranja i vizualizovanja liste letova prilikom sortiranja
+    void setFlights(const vector<Flight>& flights);
     void highlightRows(int row1, int row2);
     void resetHighlighting();
     void animate();
@@ -64,35 +66,38 @@ public:
     void updateBoxesPosition(int rowIndex, int newY);
     void setupBox(Fl_Box* box);
     void updateAllRows();
+    void onChangePathButton(Fl_Widget*);
+    static void onChangePathButtonWrapper(Fl_Widget* w, void* v);
+
+    // Algoritamske metode sortiranja
     void bubbleSort();
     void selectionSort();
     int partition(int low, int high);
     void startQuickSort();
     void quickSort(int low, int high);
     void oneStepQuickSort();
-    void onChangePathButton(Fl_Widget*);
-    static void onChangePathButtonWrapper(Fl_Widget* w, void* v);
 
 private:
-    std::stack<QuickSortState> quickSortStack;
+    stack<QuickSortState> quickSortStack;
+
     Fl_Button* sort_button;
     Fl_Input* input_path;
     Fl_Input* output_path;
     Fl_Button* confirmPathButton;
     Fl_Choice* sort_menu;
     Fl_Scroll* scroll;
-    std::vector<Fl_Box*> boxes;
+    vector<Fl_Box*> boxes;
 
     Fl_Box* sort_criteria_label;
-    Fl_Choice* sort_criteria_choice; // Dropdown for sorting criteria
+    Fl_Choice* sort_criteria_choice;
 
     Fl_Box* sort_algorithm_label;
-    Fl_Choice* sort_algorithm_choice; // Dropdown for sorting criteria
+    Fl_Choice* sort_algorithm_choice;
 
-    static void cb_sort_criteria(Fl_Widget*, void*); // Callback for the dropdown
+    static void cb_sort_criteria(Fl_Widget*, void*);
     void sort_criteria_changed(); 
 
-    static void cb_sort_algorithm(Fl_Widget*, void*); // Callback for the dropdown
+    static void cb_sort_algorithm(Fl_Widget*, void*);
     void sort_algorithm_changed();
 
     static void cb_sort(Fl_Widget*, void*);
