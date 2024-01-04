@@ -151,7 +151,6 @@
     <ClCompile Include="HistoryWindow.cpp" />
     <ClCompile Include="MyWindow.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="RowPoistion.cpp" />
     <ClCompile Include="SortCriteria.cpp" />
     <ClCompile Include="SortingHistory.cpp" />
     <ClCompile Include="SortingManager.cpp" />

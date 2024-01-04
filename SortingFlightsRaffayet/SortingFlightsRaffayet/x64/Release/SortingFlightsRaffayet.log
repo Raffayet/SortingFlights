@@ -1,18 +1,20 @@
-﻿  CommandLineArgs.cpp
-  DataStorage.cpp
-  Flight.cpp
+﻿  Flight.cpp
+  HistoryWindow.cpp
   MyWindow.cpp
-C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(202,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(227,35): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(227,32): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(265,33): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(265,28): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(354,68): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(454,59): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(205,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(233,35): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(233,32): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(269,33): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(269,28): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(342,68): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\SortingFlightsRaffayet\MyWindow.cpp(437,59): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  SortCriteria.cpp
+  SortingHistory.cpp
+  SortingManager.cpp
   main.cpp
   Generating code
-  10 of 1708 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
+  21 of 1708 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    6 functions had inline decision re-evaluated but remain unchanged
+    50 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SortingFlightsRaffayet.vcxproj -> C:\Users\Nikola's PC\Fakultet\SortingFlights\SortingFlightsRaffayet\x64\Release\SortingFlightsRaffayet.exe

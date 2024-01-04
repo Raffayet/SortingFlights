@@ -71,9 +71,6 @@
     <ClCompile Include="CommandLineArgs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RowPoistion.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SortCriteria.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
